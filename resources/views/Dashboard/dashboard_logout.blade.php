@@ -1,4 +1,4 @@
-@extends('components.headerFooter')
+@extends('components.headerFooter_logout')
 
 @section('title', 'Logout - FFOUND')
 
