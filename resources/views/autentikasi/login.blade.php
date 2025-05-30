@@ -57,9 +57,17 @@
 
             <!-- Buttons -->
             <div class="flex space-x-4">
+                <!-- Kode asli
                 <button 
                     type="submit" 
                     class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"
+                >
+                    Sign In
+                </button> -->
+                <button 
+                    type="button" 
+                    class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"
+                    onclick="window.location.href='{{ route('dashboard_login') }}'"
                 >
                     Sign In
                 </button>
