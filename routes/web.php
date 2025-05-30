@@ -11,15 +11,15 @@ Route::get('/dashboard_login', function () {
 Route::get('/dashboard_logout', function () {
     return view('dashboard.dashboard_logout');
 });
-Route::get('/dashboard_login_satpam', function () {
-    return view('dashboard.dashboard_login_satpam');
+Route::get('/dashboard_login_petugas', function () {
+    return view('dashboard.dashboard_login_petugas');
 });
 
 Route::get('/item_details', function () {
     return view('Details.item_details');
 });
 
-#Satpam
+#petugas
 Route::get('/reports_found', function () {
     return view('reports.reports_found');
 });
