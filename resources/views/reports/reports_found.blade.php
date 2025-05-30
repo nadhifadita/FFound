@@ -1,4 +1,4 @@
-@extends('components.headerFooter')
+@extends('components.headerFooter_petugas')
 
 @section('title', 'Reports(Found) - FFOUND')
 
