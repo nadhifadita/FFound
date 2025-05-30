@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard.dashboard_logout');
 });
 Route::get('/dashboard_login', function () {
     return view('dashboard.dashboard_login');
@@ -13,6 +13,10 @@ Route::get('/dashboard_logout', function () {
 });
 Route::get('/dashboard_login_satpam', function () {
     return view('dashboard.dashboard_login_satpam');
+});
+
+Route::get('/item_details', function () {
+    return view('Details.item_details');
 });
 
 #Satpam
