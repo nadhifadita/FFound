@@ -9,7 +9,7 @@
 </head>
 <body class="min--screen bg-gray-50">
     <!-- Header -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 px-4 sm:px-6 lg:px-8">
         <div class="w-full py-4 px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
@@ -45,7 +45,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-auto">
+    <footer class="bg-white border-t border-gray-200 mt-auto px-4 sm:px-6 lg:px-8">
 
         <div class="w-full py-4 px-4 sm:px-6 lg:px-8">
             <div class="flex flex-row justify-between items-center space-y-4 sm:space-y-0">
