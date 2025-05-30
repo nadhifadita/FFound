@@ -14,3 +14,19 @@ Route::get('/dashboard_logout', function () {
 Route::get('/dashboard_login_satpam', function () {
     return view('dashboard.dashboard_login_satpam');
 });
+
+#Satpam
+Route::get('/reports_found', function () {
+    return view('reports.reports_found');
+});
+Route::get('/reports_lost', function () {
+    return view('reports.reports_lost');
+});
+
+#Mahasiswa
+Route::get('/reports_mahasiswa', function () {
+    return view('reports.reports_mahasiswa');
+});
+
+
+
