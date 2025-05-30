@@ -18,7 +18,7 @@
                 </div>
 
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
+                <nav class="hidden xl:flex items-center space-x-8">
                     <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
                     <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium">Report Lost</a>
                     <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Lost List</a>
@@ -27,13 +27,13 @@
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                <button class="xl:hidden p-2" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars text-gray-700 text-xl"></i>
                 </button>
             </div>
 
             <!-- Mobile Navigation -->
-            <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200 py-4">
+            <div id="mobileMenu" class="xl:hidden hidden border-t border-gray-200 py-4">
                 <nav class="flex flex-col space-y-4">
                     <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
                     <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium">Report Lost</a>

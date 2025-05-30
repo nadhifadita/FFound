@@ -18,8 +18,8 @@
                 </div>
 
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="/dashboard_login_satpam" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
+                <nav class="hidden xl:flex items-center space-x-8">
+                    <a href="/dashboard_login_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
                     <a href="/reports_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Lost</a>
                     <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Lost List</a>
                     <a href="/reports_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Found</a>
@@ -29,15 +29,15 @@
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                <button class="xl:hidden p-2" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars text-gray-700 text-xl"></i>
                 </button>
             </div>
 
             <!-- Mobile Navigation -->
-            <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200 py-4">
+            <div id="mobileMenu" class="xl:hidden hidden border-t border-gray-200 py-4">
                 <nav class="flex flex-col space-y-4">
-                    <a href="/dashboard_login_satpam" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
+                    <a href="/dashboard_login_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
                     <a href="/reports_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Lost</a>
                     <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Lost List</a>
                     <a href="/reports_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Found</a>
