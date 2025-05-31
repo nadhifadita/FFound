@@ -13,61 +13,38 @@
         </p>
     </div>
 
-    {{-- Card match 1 --}}
-    <div class="bg-white shadow rounded-xl p-4 mb-6 max-w-md mx-auto">
-        <div class="flex items-center space-x-3 mb-3">
-            <div class="bg-yellow-400 rounded-full text-white font-bold w-8 h-8 flex items-center justify-center">A</div>
-            <div>
-                <div class="font-bold">Andi (@student)</div>
-                <div class="text-sm text-gray-500">22/12/2022</div>
-            </div>
-        </div>
-        <img src="{{ asset('images/laptop1.png') }}" alt="Laptop Axioo" class="rounded mb-3">
-        <div class="font-semibold">Laptop Axioo</div>
-        <div class="text-sm text-gray-500 mb-1">Gedung F2.3</div>
-        <p class="text-sm text-gray-600 mb-3">Ditemukan Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto</p>
-        <div class="flex gap-2">
-            <a href="#" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">See Details</a>
-            <span class="bg-green-200 text-green-700 px-4 py-2 rounded font-semibold">Matched</span>
-        </div>
-    </div>
+    <x-lost-item-card
+        name="Andi"
+        role="student"
+        date="22/12/2022"
+        image="images/laptop1.png"
+        title="Laptop"
+        location="Gedung F2.3"
+        description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
+        showMatched="true"
+    />
 
-    {{-- Card match 2 --}}
-    <div class="bg-white shadow rounded-xl p-4 mb-6 max-w-md mx-auto">
-        <div class="flex items-center space-x-3 mb-3">
-            <div class="bg-yellow-400 rounded-full text-white font-bold w-8 h-8 flex items-center justify-center">A</div>
-            <div>
-                <div class="font-bold">Andi (@student)</div>
-                <div class="text-sm text-gray-500">22/12/2022</div>
-            </div>
-        </div>
-        <img src="{{ asset('images/laptop1.png') }}" alt="Laptop Axioo" class="rounded mb-3">
-        <div class="font-semibold">Laptop Axioo</div>
-        <div class="text-sm text-gray-500 mb-1">Gedung F2.3</div>
-        <p class="text-sm text-gray-600 mb-3">Ditemukan Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto</p>
-        <div class="flex gap-2">
-            <a href="#" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">See Details</a>
-            <span class="bg-green-200 text-green-700 px-4 py-2 rounded font-semibold">Matched</span>
-        </div>
-    </div>
+    <x-lost-item-card
+        name="Andi"
+        role="student"
+        date="22/12/2022"
+        image="images/laptop1.png"
+        title="Laptop"
+        location="Gedung F2.3"
+        description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
+        showMatched="true"
+    />
 
-    {{-- Card match 3 --}}
-    <div class="bg-white shadow rounded-xl p-4 mb-6 max-w-md mx-auto">
-        <div class="flex items-center space-x-3 mb-3">
-            <div class="bg-yellow-400 rounded-full text-white font-bold w-8 h-8 flex items-center justify-center">A</div>
-            <div>
-                <div class="font-bold">Andi (@student)</div>
-                <div class="text-sm text-gray-500">22/12/2022</div>
-            </div>
-        </div>
-        <img src="{{ asset('images/laptop1.png') }}" alt="Laptop Axioo" class="rounded mb-3">
-        <div class="font-semibold">Laptop Axioo</div>
-        <div class="text-sm text-gray-500 mb-1">Gedung F2.3</div>
-        <p class="text-sm text-gray-600 mb-3">Ditemukan Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto</p>
-        <div class="flex gap-2">
-            <a href="#" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">See Details</a>
-            <span class="bg-green-200 text-green-700 px-4 py-2 rounded font-semibold">Matched</span>
-        </div>
-    </div>
+    <x-lost-item-card
+        name="Andi"
+        role="student"
+        date="22/12/2022"
+        image="images/laptop1.png"
+        title="Laptop"
+        location="Gedung F2.3"
+        description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
+        showMatched="true"
+    />
+    
 </div>
 @endsection

@@ -31,6 +31,9 @@ Route::get('/list_found', function() {
 Route::get('/list_pencocokan', function() {
     return view('lists.list_pencocokan');
 });
+Route::get('/list_history', function() {
+    return view('lists.list_history');
+});
 
 #Mahasiswa
 Route::get('/reports_mahasiswa', function () {
