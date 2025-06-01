@@ -23,7 +23,7 @@
                     <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium">Report Lost</a>
                     <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Lost List</a>
                     <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">History</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Profile</a>
+                    <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium">Profile</a>
                 </nav>
 
                 <!-- Mobile Menu Button -->
@@ -37,9 +37,10 @@
                 <nav class="flex flex-col space-y-4">
                     <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
                     <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium">Report Lost</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Lost List</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">History</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Profile</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Lost</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Lost List</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
+                    <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Profile</a>
                 </nav>
             </div>
         </div>

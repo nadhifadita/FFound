@@ -19,8 +19,8 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Log in</a>
+                    <a href="/dashboard_logout" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
+                    <a href="/login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Log in</a>
                 </nav>
 
                 <!-- Mobile Menu Button -->
@@ -32,8 +32,8 @@
             <!-- Mobile Navigation -->
             <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200 py-4">
                 <nav class="flex flex-col space-y-4">
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Log in</a>
+                    <a href="/dashboard_logout" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
+                    <a href="/login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Log in</a>
                 </nav>
             </div>
         </div>
