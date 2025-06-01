@@ -21,10 +21,10 @@
                 <nav class="hidden xl:flex items-center space-x-8">
                     <a href="/dashboard_login_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
                     <a href="/reports_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Lost</a>
-                    <a href="/list_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Lost List</a>
+                    <a href="/list_lost_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Lost List</a>
                     <a href="/reports_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Found</a>
-                    <a href="/list_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Found List</a>
-                    <a href="/list_history" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
+                    <a href="/list_found_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Found List</a>
+                    <a href="/list_history_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
                     <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Profile</a>
                 </nav>
 

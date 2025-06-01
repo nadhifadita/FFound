@@ -15,8 +15,8 @@ Route::get('/dashboard_login_petugas', function () {
     return view('dashboard.dashboard_login_petugas');
 });
 
-Route::get('/item_details', function () {
-    return view('Details.item_details');
+Route::get('/item_details_compare', function () {
+    return view('Details.item_details_compare');
 });
 
 #petugas
@@ -35,8 +35,8 @@ Route::get('/list_found_petugas', function () {
 Route::get('/list_pencocokan', function() {
     return view('lists.list_pencocokan');
 });
-Route::get('/list_history', function() {
-    return view('lists.list_history');
+Route::get('/list_history_petugas', function() {
+    return view('lists.list_history_petugas');
 });
 
 #Mahasiswa
@@ -68,6 +68,9 @@ Route::get('/list_lost', function () {
 Route::get('/list_found', function() {
     return view('lists.list_found');
 });
+Route::get('/list_history', function() {
+    return view('lists.list_history');
+});
 
 #route kosongan (biar nggak error aja)
 Route::get('/report-lost', function () {
@@ -79,3 +82,6 @@ Route::get('/lost-item-destroy', function () {
 Route::get('/profile-update', function () {
     return view('/');
 })->name('profile.update');
+Route::get('/item_details', function () {
+    return view('Details.item_details');
+});

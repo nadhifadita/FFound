@@ -1,4 +1,4 @@
-@extends('components.headerFooter_petugas')
+@extends('components.headerFooter')
 
 @section('title', 'item_details - FFOUND')
 
@@ -24,11 +24,6 @@
                             Return
                         </button>
                     </a>
-                    <a href="/list_pencocokan">
-                        <button type="button" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-gray-800">
-                                Compare
-                            </button>
-                        </a>
                 </div>
             </div>
         </div>
