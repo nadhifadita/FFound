@@ -26,6 +26,18 @@ Route::get('/reports_found', function () {
 Route::get('/reports_lost', function () {
     return view('reports.reports_lost');
 });
+Route::get('/list_lost', function () {
+    return view('lists.list_lost');
+});
+Route::get('/list_found', function() {
+    return view('lists.list_found');
+});
+Route::get('/list_pencocokan', function() {
+    return view('lists.list_pencocokan');
+});
+Route::get('/list_history', function() {
+    return view('lists.list_history');
+});
 
 #Mahasiswa
 Route::get('/reports_mahasiswa', function () {
@@ -61,4 +73,3 @@ Route::get('/lost-item-destroy', function () {
 Route::get('/profile-update', function () {
     return view('/');
 })->name('profile.update');
-#---
