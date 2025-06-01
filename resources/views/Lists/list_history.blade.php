@@ -1,7 +1,7 @@
 @extends('components.headerFooter')
 
 @section('content')
-<div class="container mx-auto px-4 py-6">
+<div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4">
     <h1 class="text-3xl font-bold text-center mb-6">History</h1>
 
     {{-- Filter Dropdown --}}
@@ -9,8 +9,9 @@
         <x-filter-dropdown />
     </div>
 
-    {{-- Daftar item --}}
-    <x-lost-item-card
+    {{-- Grid Kartu Lost Item --}}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <x-lost-item-card
         name="Andi"
         role="student"
         date="22/12/2022"
@@ -30,5 +31,6 @@
         description="Kunci Motor dengan logo honda"
     />
     <!-- dst -->
+    </div>
 </div>
 @endsection

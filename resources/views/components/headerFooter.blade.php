@@ -22,7 +22,7 @@
                     <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
                     <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Lost</a>
                     <a href="/list_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Lost List</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
+                    <a href="/list_history" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
                     <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Profile</a>
                 </nav>
 
@@ -38,7 +38,7 @@
                     <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
                     <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Lost</a>
                     <a href="/list_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Lost List</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
+                    <a href="/list_history" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
                     <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Profile</a>
                 </nav>
             </div>

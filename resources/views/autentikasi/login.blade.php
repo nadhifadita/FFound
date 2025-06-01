@@ -67,7 +67,8 @@
                 <button 
                     type="button" 
                     class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"
-                    onclick="window.location.href='{{ route('dashboard_login') }}'"
+                    onclick="handleLogin()"
+                    
                 >
                     Sign In
                 </button>
@@ -76,6 +77,9 @@
                     class="flex-1 bg-white text-gray-800 py-3 px-4 rounded-md border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"
                     onclick="window.location.href='{{ route('register') }}'"
                 >
+                    <!-- kondisi login asli
+                    onclick="window.location.href='{{ route('register') }}'"
+                    -->
                     Sign Up
                 </button>
             </div>
@@ -91,10 +95,22 @@
 </div>
 
 <script>
+function handleLogin() {
+    const email = document.getElementById('email').value.trim();
+
+    if (email === 'mahasiswa@student.ub.com') {
+        window.location.href = '/dashboard_login';
+    } else if (email === 'petugas@ub.com') {
+        window.location.href = '/dashboard_login_petugas';
+    } else {
+        alert('Email tidak dikenali. Gunakan akun demo mahasiswa atau petugas.');
+    }
+}
+
 function togglePassword() {
     const passwordInput = document.getElementById('password');
     const passwordToggle = document.getElementById('passwordToggle');
-    
+
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         passwordToggle.classList.remove('fa-eye');
@@ -106,4 +122,5 @@ function togglePassword() {
     }
 }
 </script>
+
 @endsection

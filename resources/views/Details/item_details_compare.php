@@ -3,7 +3,7 @@
 @section('title', 'item_details - FFOUND')
 
 @section('content')
-<div class="min-h-screen bg-gray-50 px-4 sm:px-4 lg:px-4">
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 sm:px-4 lg:px-4">
 
     <!-- Judul Page di atas dan tengah -->
     <div class="text-center mt-8 mb-8">
@@ -19,9 +19,9 @@
                 @include('components.itemDetails')
                 
                 <div class = "flex justify-between mt-4">
-                    <a href= "/dashboard_login">
-                        <button class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-800">
-                            return
+                    <a href="{{ url()->previous() }}">
+                        <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-800">
+                            Return
                         </button>
                     </a>
 
