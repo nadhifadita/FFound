@@ -28,7 +28,9 @@
             <div class="flex justify-between">
                 <a href="/item_details_compare" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">See Details</a>
                     @if ($showMatched)
-                        <span class="bg-green-200 text-green-700 px-4 py-2 rounded font-semibold">Matched</span>
+                        <button>
+                            <a href="/list_history_petugas" class="bg-green-200 text-green-700 px-4 py-2 rounded font-semibold">Matched</a>
+                        </button>
                         @elseif ($showResolved)
                             <span class="bg-yellow-500 text-white px-4 py-2 rounded font-semibold">Resolved</span>
                     @else
