@@ -26,11 +26,11 @@ Route::get('/reports_found', function () {
 Route::get('/reports_lost', function () {
     return view('reports.reports_lost');
 });
-Route::get('/list_lost', function () {
-    return view('lists.list_lost');
+Route::get('/list_lost_petugas', function () {
+    return view('lists.list_lost_petugas');
 });
-Route::get('/list_found', function() {
-    return view('lists.list_found');
+Route::get('/list_found_petugas', function () {
+    return view('lists.list_found_petugas');
 });
 Route::get('/list_pencocokan', function() {
     return view('lists.list_pencocokan');
@@ -62,6 +62,12 @@ Route::get('/edit-profile', function () {
 Route::get('/logout', function () {
     return view('dashboard.dashboard_logout');
 })->name('logout');
+Route::get('/list_lost', function () {
+    return view('lists.list_lost');
+});
+Route::get('/list_found', function() {
+    return view('lists.list_found');
+});
 
 #route kosongan (biar nggak error aja)
 Route::get('/report-lost', function () {

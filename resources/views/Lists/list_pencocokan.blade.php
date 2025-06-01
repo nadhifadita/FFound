@@ -1,4 +1,4 @@
-@extends('components.headerFooter')
+@extends('components.headerFooter_petugas')
 
 @section('content')
 <div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4">
@@ -7,18 +7,16 @@
     <h1 class="text-3xl font-bold text-center mb-6">Report Details</h1>
 
     {{-- Informasi Detail Item --}}
-    <div class="bg-white shadow rounded-lg item-center p-6 mb-8 max-w-xl mx-auto">
-        <p><span class="font-semibold">ID item:</span> 001</p>
-        <p><span class="font-semibold">Item Name:</span> Laptop</p>
-        <p class="flex items-center gap-2 mt-2">
-            <span class="font-semibold">Status barang:</span>
-            <span class="bg-red-200 text-red-600 font-bold py-1 px-3 rounded-full text-sm">Unfound</span>
-        </p>
-    </div>
+    <x-informasi-detail-item
+        id_barang="001"
+        nama_barang="Laptop"
+        {{-- atribut status ga diisi karena anggepannya unfound
+        kalo ditulis true baru found --}}
+    />
 
     {{-- Grid Kartu Lost Item --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <x-lost-item-card
+        <x-item-card-petugas
             name="Andi"
             role="student"
             date="22/12/2022"
@@ -29,7 +27,7 @@
             showMatched="true"
         />
 
-        <x-lost-item-card
+        <x-item-card-petugas
             name="Andi"
             role="student"
             date="22/12/2022"
@@ -40,7 +38,7 @@
             showMatched="true"
         />
 
-        <x-lost-item-card
+        <x-item-card-petugas
             name="Andi"
             role="student"
             date="22/12/2022"
