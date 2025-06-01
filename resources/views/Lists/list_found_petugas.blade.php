@@ -1,4 +1,4 @@
-@extends('components.headerFooter')
+@extends('components.headerFooter_petugas')
 
 @section('content')
 <div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4">
