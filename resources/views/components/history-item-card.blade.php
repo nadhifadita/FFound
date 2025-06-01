@@ -7,7 +7,6 @@
     'title',
     'location',
     'description',
-    'showMatched' => false,
     'showResolved' => false
 ])
 
@@ -28,10 +27,6 @@
         <p class="text-sm text-gray-600 mb-3">{{ $description }}</p>
         <div class="flex justify-between">
             <a href="/item_details" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">See Details</a>
-            @if ($showMatched)
-                <span class="bg-green-200 text-green-700 px-4 py-2 rounded font-semibold">Compare</span>
-            @endif
-            
             @if ($showResolved)
                 <span class="bg-yellow-500 text-white px-4 py-2 rounded font-semibold">Resolved</span>
             @else
