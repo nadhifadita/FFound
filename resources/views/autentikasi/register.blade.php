@@ -11,7 +11,7 @@
         </div>
 
         <!-- Register Form -->
-        <form class="space-y-6" action="#" method="POST">
+        <form class="space-y-6" action="javascript:void(0)" method="POST">
             @csrf
             
             <!-- Name Field -->

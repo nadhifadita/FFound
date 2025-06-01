@@ -26,7 +26,7 @@
                     name="email" 
                     type="email" 
                     required 
-                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
                     placeholder="Enter your email"
                 >
             </div>
@@ -42,7 +42,7 @@
                         name="password" 
                         type="password" 
                         required 
-                        class="w-full px-3 py-3 pr-10 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        class="w-full px-3 py-3 pr-10 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
                         placeholder="Enter your password"
                     >
                     <button 
@@ -81,7 +81,7 @@
             </div>
 
             <!-- Forgot Password Link -->
-            <div class="text-center">
+            <div class="text-start">
                 <a href="/forgot_password" class="text-sm text-gray-600 hover:text-gray-900 underline">
                     forgot password?
                 </a>

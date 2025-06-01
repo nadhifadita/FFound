@@ -19,11 +19,11 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden xl:flex items-center space-x-8">
-                    <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
-                    <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium">Report Lost</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Lost List</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">History</a>
-                    <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium">Profile</a>
+                    <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
+                    <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Lost</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Lost List</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
+                    <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Profile</a>
                 </nav>
 
                 <!-- Mobile Menu Button -->
@@ -35,9 +35,8 @@
             <!-- Mobile Navigation -->
             <div id="mobileMenu" class="xl:hidden hidden border-t border-gray-200 py-4">
                 <nav class="flex flex-col space-y-4">
-                    <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
-                    <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium">Report Lost</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Lost</a>
+                    <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
+                    <a href="/reports_mahasiswa" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Lost</a>
                     <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Lost List</a>
                     <a href="#" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
                     <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Profile</a>

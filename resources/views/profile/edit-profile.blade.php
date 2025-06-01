@@ -19,8 +19,8 @@
                 </div>
             </div>
 
-            <!-- Profile Form -->
-            <form action="{{ route('profile.update') }}" method="POST" class="space-y-6">
+            <!-- Profile Form {{ route('profile.update') }} -->
+            <form action="javascript:void(0)" method="POST" class="space-y-6">
                 @csrf
                 @method('PUT')
                 
@@ -35,7 +35,7 @@
                         type="text" 
                         value="{{ old('name', auth()->user()->name ?? '') }}"
                         required
-                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('name') border-red-500 @enderror"
+                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent @error('name') border-red-500 @enderror"
                         placeholder="Name"
                     >
                     @error('name')
@@ -54,7 +54,7 @@
                         type="text" 
                         value="{{ old('nim', auth()->user()->nim ?? '') }}"
                         required
-                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('nim') border-red-500 @enderror"
+                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent @error('nim') border-red-500 @enderror"
                         placeholder="NIM"
                     >
                     @error('nim')
@@ -73,7 +73,7 @@
                         type="tel" 
                         value="{{ old('phone', auth()->user()->phone ?? '') }}"
                         required
-                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('phone') border-red-500 @enderror"
+                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent @error('phone') border-red-500 @enderror"
                         placeholder="Contact Number"
                     >
                     @error('phone')

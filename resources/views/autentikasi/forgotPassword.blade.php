@@ -12,7 +12,7 @@
         </div>
 
         <!-- Login Form -->
-        <form class="space-y-6" action="#" method="POST">
+        <form class="space-y-6" action="javascript:void(0)" method="POST">
             @csrf
             
             <!-- Email Field -->
@@ -34,7 +34,7 @@
             
 
             <!-- Buttons -->
-            <div class="flex space-x-4">
+            <div class="flex space-x-4" action ='#'>
                 <button 
                     type="submit" 
                     class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"

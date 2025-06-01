@@ -161,7 +161,7 @@
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="flex space-x-4 pt-4">
+                    <div class="flex flex-col sm:flex-row gap-4">
                         <button 
                             type="button" 
                             onclick="window.location.href='{{ route('edit-profile') }}'"
