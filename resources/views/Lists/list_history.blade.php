@@ -19,7 +19,6 @@
         title="Laptop"
         location="Gedung F2.3"
         description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-        showResolved="true"
     />
     <x-history-item-card
         name="Qih"

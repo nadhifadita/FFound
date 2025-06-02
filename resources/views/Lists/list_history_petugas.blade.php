@@ -19,7 +19,7 @@
         title="Laptop"
         location="Gedung F2.3"
         description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-        showResolved="true"
+        showResolved
     />
     <x-history-item-card
         name="Qih"
@@ -29,7 +29,18 @@
         title="Kunci Motor Honda"
         location="Parkiran Gedung A"
         description="Kunci Motor dengan logo honda"
+        showResolved
     />
+
+    <x-history-item-card
+        name="Dhif"
+        role="student"
+        date="22/12/2022"
+        image="images/kunci2.png"
+        title="Kunci Motor Honda"
+        location="Gedung G1.2"
+        description="Kunci Motor dengan logo honda"
+        />
     <!-- dst -->
     </div>
 </div>

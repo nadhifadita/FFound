@@ -8,7 +8,7 @@
     <!-- Judul Page di atas dan tengah -->
     <div class="text-center mt-8 mb-8">
         <h1 class="text-3xl font-bold text-black leading-relaxed">
-            Report Found
+            Report Lost
         </h1>
     </div>
 
