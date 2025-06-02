@@ -26,7 +26,7 @@ Route::get('/lost_item_details_petugas', function () {
 #petugas
 Route::get('/profile_petugas', function () {
     return view('profile.profile_petugas');
-})->name('profile');
+})->name('profile_petugas');
 Route::get('/edit-profile_petugas', function () {
     return view('profile.edit-profile_petugas');
 })->name('edit-profile_petugas');
@@ -53,6 +53,9 @@ Route::get('/found_item_details', function() {
 });
 Route::get('/lost_item_details_petugas', function() {
     return view('Details.lost_item_details_petugas');
+});
+Route::get('/history_items_details_petugas', function() {
+    return view('Details.history_items_details_petugas');
 });
 
 #Mahasiswa
@@ -89,6 +92,9 @@ Route::get('/list_history', function() {
 });
 Route::get('/lost_item_details', function () {
     return view('Details.lost_item_details');
+});
+Route::get('/history_items_details', function() {
+    return view('Details.history_items_details');
 });
 
 #route kosongan (biar nggak error aja)
