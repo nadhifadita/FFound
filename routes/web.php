@@ -94,6 +94,3 @@ Route::get('/lost-item-destroy', function () {
 Route::get('/profile-update', function () {
     return view('/');
 })->name('profile.update');
-Route::get('/item_details', function () {
-    return view('Details.item_details');
-});
