@@ -16,7 +16,6 @@
             title="Laptop"
             location="Kehilangan di Gedung F2.3"
             description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-            showResolved="true"
         />
 
         <x-item-card-petugas
@@ -27,7 +26,6 @@
             title="Kunci Motor Honda"
             location="Parkiran Gedung A"
             description="Kunci Motor dengan logo honda"
-            showResolved="true"
         />
 
         <x-item-card-petugas
