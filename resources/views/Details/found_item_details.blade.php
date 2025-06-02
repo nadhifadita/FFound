@@ -16,7 +16,7 @@
     <div class="flex justify-center mt-12">
         <div class="max-w-4xl w-full">
             <div class="text-left mb-8">
-                @include('components.itemDetails')
+                @include('components.found-details')
                 
                 <div class = "flex justify-between mt-4">
                     <a href="{{ url()->previous() }}">

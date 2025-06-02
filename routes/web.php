@@ -15,8 +15,11 @@ Route::get('/dashboard_login_petugas', function () {
     return view('dashboard.dashboard_login_petugas');
 });
 
-Route::get('/item_details_compare', function () {
-    return view('Details.item_details_compare');
+Route::get('/found_item_details', function () {
+    return view('Details.found_item_details');
+});
+Route::get('/lost_item_details_petugas', function () {
+    return view('Details.lost_item_details_petugas');
 });
 
 #petugas
@@ -37,6 +40,12 @@ Route::get('/list_pencocokan', function() {
 });
 Route::get('/list_history_petugas', function() {
     return view('lists.list_history_petugas');
+});
+Route::get('/found_item_details', function() {
+    return view('Details.found_item_details');
+});
+Route::get('/lost_item_details_petugas', function() {
+    return view('Details.lost_item_details_petugas');
 });
 
 #Mahasiswa
@@ -70,6 +79,9 @@ Route::get('/list_found', function() {
 });
 Route::get('/list_history', function() {
     return view('lists.list_history');
+});
+Route::get('/lost_item_details', function () {
+    return view('Details.lost_item_details');
 });
 
 #route kosongan (biar nggak error aja)

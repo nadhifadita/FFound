@@ -24,7 +24,7 @@
             <div class="text-sm text-gray-500 mb-1">{{ $location }}</div>
             <p class="text-sm text-gray-600 mb-3">{{ $description }}</p>
             <div class="flex justify-between">
-                <a href="/item_details" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">See Details</a>
+                <a href="/lost_item_details" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">See Details</a>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-@extends('components.headerFooter')
+@extends('components.headerFooter_petugas')
 
 @section('title', 'item_details - FFOUND')
 
@@ -18,13 +18,14 @@
             <div class="text-left mb-8">
                 @include('components.itemDetails')
                 
-                <div class="flex justify-between mt-4">
+                <div class = "flex justify-between mt-4">
                     <a href="{{ url()->previous() }}">
                         <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-800">
                             Return
                         </button>
                     </a>
                 </div>
+                
             </div>
         </div>
     </div>
