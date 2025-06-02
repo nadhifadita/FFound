@@ -30,6 +30,7 @@
                     <a href="/lost_item_details_petugas" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">See Details</a>
                 @elseif (Request::is('list_found_petugas'))
                     <a href="/found_item_details" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">See Details</a>
+                @endif
                     @if ($showMatched)
                         <button>
                             <a href="/list_history_petugas" class="bg-green-200 text-green-700 px-4 py-2 rounded font-semibold">Matched</a>
