@@ -26,7 +26,7 @@ Route::get('/lost_item_details_petugas', function () {
 #petugas
 Route::get('/profile_petugas', function () {
     return view('profile.profile_petugas');
-})->name('profile');
+})->name('profile_petugas');
 Route::get('/edit-profile_petugas', function () {
     return view('profile.edit-profile_petugas');
 })->name('edit-profile_petugas');
