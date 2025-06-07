@@ -11,7 +11,7 @@
 
     {{-- Grid Kartu Lost Item --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <x-history-item-card
+        <x-history-item-card-petugas
         name="Andi"
         role="student"
         date="22/12/2022"
@@ -21,7 +21,7 @@
         description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
         showResolved
     />
-    <x-history-item-card
+    <x-history-item-card-petugas
         name="Qih"
         role="student"
         date="22/12/2022"
@@ -32,7 +32,7 @@
         showResolved
     />
 
-    <x-history-item-card
+    <x-history-item-card-petugas
         name="Dhif"
         role="student"
         date="22/12/2022"
