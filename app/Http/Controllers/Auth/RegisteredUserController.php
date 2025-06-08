@@ -37,12 +37,24 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $identitas = $request->nim_nip;
+        if(strlen($identitas) === 15) {
+            $role = 'mahasiswa';
+        } elseif(strlen($identitas === 18)) {
+            $role = 'petugas';
+        } else {
+            return back()->withErrors([
+                'nim_nip' => 'NIM/NIP tidak valid.',
+            ]);
+        }
+
         $user = User::create([
             'name' => $request->name,
             'nim_nip' => $request->nim_nip,
             'phone' => $request->phone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $role,
         ]);
 
         event(new Registered($user));
