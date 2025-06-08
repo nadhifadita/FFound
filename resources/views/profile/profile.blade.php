@@ -169,15 +169,15 @@
                         >
                             Edit Profile
                         </button>
-                        <!-- Kode sementara tombol logout untuk front end -->
+                        <!-- Kode sementara tombol logout untuk front end 
                         <button 
                             type="button" 
                             onclick="window.location.href='{{ route('logout') }}'"
                             class="flex-1 w-full bg-red-500 text-white py-3 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 font-medium"
                         >
                             Log out
-                        </button>
-                        <!-- kode sebenarnya untuk tombol logout 
+                        </button> -->
+                        <!-- kode sebenarnya untuk tombol logout -->
                         <form action="{{ route('logout') }}" method="POST" >
                             @csrf
                             <button 
@@ -188,7 +188,7 @@
                                 Log out
                             </button>
                         </form>
-                        -->
+                        
                     </div>
                 </form>
             </div>

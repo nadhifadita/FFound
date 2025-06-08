@@ -84,7 +84,7 @@
             <div class="flex space-x-4">
                 <button 
                     type="submit" 
-                    class="flex-1 bg-yellow-500 text-white py-3 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 font-medium"
+                    class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"
                 >
                     Sign In
                 </button>

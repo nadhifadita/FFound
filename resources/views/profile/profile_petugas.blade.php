@@ -95,7 +95,7 @@
                 <!-- Profile Form -->
                 <form class="space-y-6">
                     @csrf
-                    
+
                     <!-- Name Field -->
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
@@ -121,7 +121,7 @@
                             id="nip" 
                             name="nip" 
                             type="text" 
-                            value="{{ auth()->user()->nip ?? '' }}"
+                            value="{{ auth()->user()->nim_nip ?? '' }}"
                             readonly
                             class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 text-gray-600 cursor-not-allowed"
                             placeholder="NIP"
@@ -160,37 +160,32 @@
                         >
                     </div>
 
-                    <!-- Action Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4">
+                    <!-- Edit Button Only -->
+                    
+                </form>
+
+                <!-- Form Logout Harus di Luar Form Profile -->
+                <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                    <button 
+                        type="button" 
+                        onclick="window.location.href='{{ route('edit-profile_petugas') }}'"
+                        class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"
+                    >
+                        Edit Profile
+                    </button>
+
+                    <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('Are you sure you want to log out?')" class="flex-1">
+                        @csrf
                         <button 
-                            type="button" 
-                            onclick="window.location.href='{{ route('edit-profile_petugas') }}'"
-                            class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"
-                        >
-                            Edit Profile
-                        </button>
-                        <!-- Kode sementara tombol logout untuk front end -->
-                        <button 
-                            type="button" 
-                            onclick="window.location.href='{{ route('logout') }}'"
-                            class="flex-1 w-full bg-red-500 text-white py-3 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 font-medium"
+                            type="submit" 
+                            class="w-full bg-red-500 text-white py-3 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 font-medium"
                         >
                             Log out
                         </button>
-                        <!-- kode sebenarnya untuk tombol logout 
-                        <form action="{{ route('logout') }}" method="POST" >
-                            @csrf
-                            <button 
-                                type="submit" 
-                                class="flex-1 w-full bg-red-500 text-white py-3 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 font-medium"
-                                onclick="return confirm('Are you sure you want to log out?')"
-                            >
-                                Log out
-                            </button>
-                        </form>
-                        -->
-                    </div>
-                </form>
+                    </form>
+                </div>
+
+
             </div>
         </div>
     </div>

@@ -118,7 +118,7 @@ Route::get('/profile-update', function () {
 
 # breeze
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('Dashboard.dashboard_login_petugas');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

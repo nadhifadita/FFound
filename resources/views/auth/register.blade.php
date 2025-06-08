@@ -93,7 +93,7 @@
             <!-- Submit -->
             <div class="pt-4">
                 <button type="submit"
-                    class="w-full bg-blue-500 text-white py-3 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 font-medium transition duration-200">
+                    class="w-full bg-gray-300 text-gray-700 py-3 px-4 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium transition duration-200">
                     Register
                 </button>
             </div>
