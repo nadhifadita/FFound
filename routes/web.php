@@ -111,9 +111,7 @@ Route::get('/report-lost', function () {
 Route::get('/lost-item-destroy', function () {
     return view('/');
 })->name('lost-item.destroy');
-Route::get('/profile-update', function () {
-    return view('/');
-})->name('profile.update');
+
 
 
 # breeze
