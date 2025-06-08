@@ -19,7 +19,7 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="/dashboard_logout" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
+                    <a href="/landing_page" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Home</a>
                     <a href="/login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Log in</a>
                 </nav>
 

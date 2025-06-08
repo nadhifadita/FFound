@@ -68,10 +68,10 @@ Route::get('/reports_mahasiswa', function () {
 });
 
 Route::get('/login', function () {
-    return view('autentikasi.login');
+    return view('auth.login');
 })->name('login');
 Route::get('/register', function () {
-    return view('autentikasi.register');
+    return view('auth.register');
 })->name('register');
 Route::get('/forgot_password', function () {
     return view('autentikasi.forgotPassword');
@@ -82,8 +82,8 @@ Route::get('/profile', function () {
 Route::get('/edit-profile', function () {
     return view('profile.edit-profile');
 })->name('edit-profile');
-Route::get('/logout', function () {
-    return view('dashboard.dashboard_logout');
+Route::get('/landing_page', function () {
+    return view('dashboard.landing_page');
 })->name('logout');
 Route::get('/list_lost', function () {
     return view('lists.list_lost');
