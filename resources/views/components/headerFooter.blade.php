@@ -20,21 +20,21 @@
                 <!-- Desktop Navigation -->
                 <nav class="hidden xl:flex items-center space-x-8">
                     {{-- Tautan Home, selalu ditampilkan --}}
-                    <a href="/dashboard" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Home</a>
+                    <a href="{{ route('dashboard') }}" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Home</a>
 
                     @auth {{-- Tautan ini hanya akan tampil jika pengguna sudah login --}}
                         {{-- Tautan untuk semua pengguna yang login (user biasa & admin) --}}
                         <a href="/reports_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Report Lost</a>
-                        <a href="/list_lost_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Lost List</a>
+                        <a href="/list_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Lost List</a>
 
                         @if (Auth::user()->is_admin) {{-- Tautan ini hanya untuk Admin --}}
                             <a href="/reports_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Report Found</a>
-                            <a href="/list_found_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Found List</a>
+                            <a href="/list_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Found List</a>
                         @endif
 
                         {{-- Tautan untuk semua pengguna yang login (user biasa & admin) --}}
-                        <a href="/list_history_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">History</a>
-                        <a href="/profile_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Profile</a>
+                        <a href="/list_history" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">History</a>
+                        <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Profile</a>
 
                         {{-- Logout Button --}}
                         <form method="POST" action="{{ route('logout') }}">
