@@ -4,13 +4,13 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('dashboard.dashboard_logout');
+    return view('dashboard.landing_page');
 });
 Route::get('/dashboard_login', function () {
     return view('dashboard.dashboard_login');
 })->name('dashboard_login');
-Route::get('/dashboard_logout', function () {
-    return view('dashboard.dashboard_logout');
+Route::get('/', function () {
+    return view('dashboard.landing_page');
 });
 Route::get('/dashboard_login_petugas', function () {
     return view('dashboard.dashboard_login_petugas');
