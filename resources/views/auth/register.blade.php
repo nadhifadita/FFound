@@ -16,6 +16,20 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- NIM/NIP -->
+        <div>
+            <x-input-label for="nim_nip" :value="__('NIM/NIP')" />
+            <x-text-input id="nim_nip" class="block mt-1 w-full" type="text" name="nim_nip" :value="old('nim_nip')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('nim_nip')" class="mt-2" />
+        </div>
+
+        <!-- Phone Number -->
+        <div>
+            <x-input-label for="phone" :value="__('Phone Number')" />
+            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
