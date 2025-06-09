@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\NewPasswordController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,10 +16,10 @@ Route::get('/dashboard_login', function () {
 })->name('dashboard_login');
 Route::get('/dashboard_logout', function () {
     return view('dashboard.dashboard_logout');
-});
+})->name('dashboard_logout');
 Route::get('/dashboard_login_petugas', function () {
     return view('dashboard.dashboard_login_petugas');
-});
+})->name('dashboard_login_petugas');
 
 Route::get('/found_item_details', function () {
     return view('Details.found_item_details');
@@ -67,14 +72,29 @@ Route::get('/reports_mahasiswa', function () {
     return view('reports.reports_mahasiswa');
 });
 
+// Rute Login Anda (untuk menampilkan form) - Dibenahi ke 'auth.login'
 Route::get('/login', function () {
-    return view('autentikasi.login');
+    return view('auth.login');
 })->name('login');
+
+// Rute POST untuk menangani submit form login, arahkan ke controller Breeze
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+
+// Rute Register Anda (untuk menampilkan form) - Dibenahi ke 'auth.register'
 Route::get('/register', function () {
-    return view('autentikasi.register');
+    return view('auth.register');
 })->name('register');
+
+// Rute POST untuk menangani submit form register, arahkan ke controller Breeze
+Route::post('/register', [RegisteredUserController::class, 'store']);
+
+// Rute Logout, arahkan ke controller Breeze
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+
+// Rute Forgot Password - Dibenahi ke 'auth.forgotPassword'
 Route::get('/forgot_password', function () {
-    return view('autentikasi.forgotPassword');
+    return view('auth.forgotPassword');
 });
 Route::get('/profile', function () {
     return view('profile.profile');
@@ -82,9 +102,7 @@ Route::get('/profile', function () {
 Route::get('/edit-profile', function () {
     return view('profile.edit-profile');
 })->name('edit-profile');
-Route::get('/logout', function () {
-    return view('dashboard.dashboard_logout');
-})->name('logout');
+
 Route::get('/list_lost', function () {
     return view('lists.list_lost');
 });
@@ -116,15 +134,44 @@ Route::get('/profile-update', function () {
 })->name('profile.update');
 
 
-# breeze
+# breeze (Bagian ini perlu disesuaikan jika Anda masih ingin menggunakan profile management Breeze)
+// Rute dashboard Breeze (jika Anda ingin menggunakannya sebagai fallback atau untuk tujuan lain)
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // Anda bisa menambahkan logika pengalihan di sini juga berdasarkan peran
+    if (auth()->check()) { // Pastikan user sudah login
+        if (auth()->user()->role === 'mahasiswa') {
+            return redirect()->route('dashboard_login');
+        } elseif (auth()->user()->role === 'petugas') {
+            return redirect()->route('dashboard_login_petugas');
+        }
+    }
+    // Jika tidak ada peran yang cocok atau tidak login, arahkan ke view default Breeze atau ke halaman utama
+    return view('dashboard'); // Ini view dashboard bawaan Breeze
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Rute profile Breeze (jika Anda masih ingin menggunakannya)
+    // Pastikan nama rute ini unik dan tidak bertabrakan dengan rute profile Anda yang lain
+    Route::get('/profile/breeze', [ProfileController::class, 'edit'])->name('profile.edit.breeze');
+    Route::patch('/profile/breeze', [ProfileController::class, 'update'])->name('profile.update.breeze');
+    Route::delete('/profile/breeze', [ProfileController::class, 'destroy'])->name('profile.destroy.breeze');
 });
 
-require __DIR__.'/auth.php';
+
+Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+            ->name('password.request');
+
+// Mengirim link reset password ke email
+Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+            ->name('password.email');
+
+// Form untuk mengatur password baru setelah menerima link reset
+Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+            ->name('password.reset');
+
+// Menyimpan password baru
+Route::post('reset-password', [NewPasswordController::class, 'store'])
+            ->name('password.update');
+
+// require __DIR__.'/auth.php'; // <-- Pastikan ini tetap di komentar atau dihapus

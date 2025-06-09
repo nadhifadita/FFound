@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'nim_nip',
         'phone',
+        'role', // <-- BARIS INI DITAMBAHKAN!
     ];
 
     /**
