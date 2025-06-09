@@ -1,53 +1,24 @@
 @extends('components.headerFooter_petugas')
+@section('title', 'list_pencocokan')
 
 @section('content')
-<div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4">
+<div class="p-6 text-center">
+    <h1 class="text-2xl font-bold mb-4 text-center">Report Details</h1>
 
-    {{-- Judul --}}
-    <h1 class="text-3xl font-bold text-center mb-6">Report Details</h1>
+    <a href="{{ route('compare.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">
+        Tambah Pencocokan
+    </a>
 
-    {{-- Informasi Detail Item --}}
-    <x-informasi-detail-item
-        id_barang="001"
-        nama_barang="Laptop"
-        {{-- atribut status ga diisi karena anggepannya unfound
-        kalo ditulis true baru found --}}
-    />
-
-    {{-- Grid Kartu Lost Item --}}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <x-item-card-petugas
-            name="Andi"
-            role="student"
-            date="22/12/2022"
-            image="images/laptop1.png"
-            title="Laptop"
-            location="Gedung F2.3"
-            description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-            showMatched="true"
-        />
-
-        <x-item-card-petugas
-            name="Andi"
-            role="student"
-            date="22/12/2022"
-            image="images/laptop1.png"
-            title="Laptop"
-            location="Gedung F2.3"
-            description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-            showMatched="true"
-        />
-
-        <x-item-card-petugas
-            name="Andi"
-            role="student"
-            date="22/12/2022"
-            image="images/laptop1.png"
-            title="Laptop"
-            location="Gedung F2.3"
-            description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-            showMatched="true"
-        />
+    <div class="mt-4">
+        @forelse ($compares as $compare)
+            <div class="p-4 bg-white shadow rounded mb-2">
+                <p><strong>Lost Item:</strong> {{ $compare->lostItem->item_name ?? 'N/A' }}</p>
+                <p><strong>Found Item:</strong> {{ $compare->foundItem->item_name ?? 'N/A' }}</p>
+                <p><strong>Tanggal:</strong> {{ $compare->compared_at }}</p>
+            </div>
+        @empty
+            <p>Tidak ada data pencocokan.</p>
+        @endforelse
     </div>
 </div>
 @endsection

@@ -11,6 +11,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\LostItemController;
 use App\Http\Controllers\FoundItemController; 
 use App\Http\Controllers\HistoryController; 
+use App\Http\Controllers\CompareController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,9 +62,13 @@ Route::get('/list_lost', [LostItemController::class, 'index'])->name('list_lost'
 Route::get('/list_lost_petugas', [LostItemController::class, 'indexPetugas'])->name('list_lost_petugas');
 Route::view('/list_found', 'lists.list_found');
 Route::get('/list_found_petugas', [FoundItemController::class, 'indexPetugas'])->name('list_found_petugas');
-Route::get('/list_pencocokan', function() {return view('lists.list_pencocokan');})->name('list_pencocokan');
+// Route::get('/list_pencocokan', function() {return view('lists.list_pencocokan');})->name('list_pencocokan');
 Route::view('/list_history', 'lists.list_history');
-// Route::view('/list_history_petugas', 'lists.list_history_petugas');
+
+// list pencocokan
+Route::get('/list_pencocokan', [CompareController::class, 'index'])->name('compare.index');
+Route::get('/compare/create', [CompareController::class, 'create'])->name('compare.create');
+Route::post('/compare', [CompareController::class, 'store'])->name('compare.store');
 
 /*
 |--------------------------------------------------------------------------
