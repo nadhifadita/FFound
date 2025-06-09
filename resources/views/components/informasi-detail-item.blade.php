@@ -1,20 +1,21 @@
-<div>
-    @props([
-        'id_barang',
-        'nama_barang',
-        'status' => false
-    ])
+{{-- Komponen ini mengharapkan variabel $item, yang merupakan model FoundItem --}}
 
-    <div class="bg-white shadow rounded-lg item-center p-6 mb-8 max-w-xl mx-auto">
-        <p class="font-semibold">ID item: {{ $id_barang }}</p>
-        <p class="font-semibold">Item name: {{ $nama_barang }}</p>
-        <p class="flex items-center gap-2 mt-2">
-            <span class="font-semibold">Status barang:</span>
-            @if ($status)
-                <span class="bg-green-400 text-white font-bold py-1 px-3 rounded-full text-sm">Found</span>
-            @else
-                <span class="bg-red-200 text-red-600 font-bold py-1 px-3 rounded-full text-sm">Unfound</span>
-            @endif
-        </p>
+<div class="flex justify-center mb-8">
+    <div class="bg-white inline-block rounded-lg shadow-md p-4 border">
+        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+            <div class="flex-shrink-0">
+                @if($item->photo_path)
+                    <img src="{{ asset('storage/' . $item->photo_path) }}" alt="{{ $item->item_name }}" class="w-32 h-32 object-cover rounded-lg border">
+                @else
+                    <div class="w-32 h-32 flex items-center justify-center bg-gray-200 rounded-lg border text-gray-500">No Image</div>
+                @endif
+            </div>
+            <div class="text-gray-700">
+                <p class="text-lg font-semibold">{{ $item->item_name }}</p>
+                <p class="text-sm">Lokasi Ditemukan: {{ $item->location }}</p>
+                <p class="text-sm">Tanggal Ditemukan: {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}</p>
+                <p class="text-sm line-clamp-2">{{ $item->description ?? 'Tidak ada deskripsi.' }}</p>
+            </div>
+        </div>
     </div>
 </div>

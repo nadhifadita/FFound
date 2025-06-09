@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\LostItemController;
 use App\Http\Controllers\FoundItemController; 
+use App\Http\Controllers\PencocokanController; 
+use App\Models\HistoryItem;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,11 @@ Route::view('/history_items_details_petugas', 'Details.history_items_details_pet
 Route::view('/history_item_details_petugas', 'Details.history_item_details_petugas');
 Route::view('/history_items_details', 'Details.history_items_details');
 Route::view('/history_item_details', 'Details.history_item_details');
+Route::get('/list_history', [App\Http\Controllers\HistoryItemController::class, 'index'])->name('list_history');
+
+// Rute Detail History Item (PUBLIK, konten akan disesuaikan di controller)
+Route::get('/history-items/{historyItem}', [App\Http\Controllers\HistoryItemController::class, 'show'])->name('history_item_details');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +65,10 @@ Route::get('/list_lost_petugas', [LostItemController::class, 'indexPetugas'])->n
 Route::view('/list_found', 'lists.list_found');
 Route::get('/list_found_petugas', [FoundItemController::class, 'indexPetugas'])->name('list_found_petugas');
 Route::get('/list_pencocokan', function() {return view('lists.list_pencocokan');})->name('list_pencocokan');
-Route::view('/list_history', 'lists.list_history');
-Route::view('/list_history_petugas', 'lists.list_history_petugas');
+Route::get('/list_history', [App\Http\Controllers\HistoryItemController::class, 'index'])->name('list_history');
+Route::get('/list_history_petugas', [App\Http\Controllers\HistoryItemController::class, 'indexPetugas'])->name('list_history_petugas');
+Route::get('/list_pencocokan/{foundItem}', [App\Http\Controllers\PencocokanController::class, 'compare'])->name('list_pencocokan');
+    Route::post('/pencocokan/mark-matched', [App\Http\Controllers\PencocokanController::class, 'markMatched'])->name('pencocokan.mark_matched');
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +79,7 @@ Route::view('/list_history_petugas', 'lists.list_history_petugas');
 Route::view('/reports_found', 'reports.reports_found')->name('reports_found');
 Route::view('/reports_lost', 'reports.reports_lost')->name('reports_lost');
 Route::view('/reports_mahasiswa', 'reports.reports_mahasiswa')->name('reports_mahasiswa');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +112,16 @@ Route::post('reset-password', [NewPasswordController::class, 'store'])->name('pa
 Route::get('/lost-items/{lostItem}', [LostItemController::class, 'show'])->name('lost_item_details');
 Route::get('/found-items/{foundItem}', [App\Http\Controllers\FoundItemController::class, 'show'])->name('found_item_details');
 
+/*
+|--------------------------------------------------------------------------
+| Pencocokan Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/list_pencocokan/{foundItem}', [PencocokanController::class, 'compare'])->name('list_pencocokan');
+
+// Rute POST untuk aksi menandai item sebagai cocok
+Route::post('/pencocokan/mark-matched', [PencocokanController::class, 'markMatched'])->name('pencocokan.mark_matched');
 /*
 |--------------------------------------------------------------------------
 | Empty Placeholder Routes

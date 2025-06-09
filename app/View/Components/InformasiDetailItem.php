@@ -2,18 +2,24 @@
 
 namespace App\View\Components;
 
+use Illuminate\View\Component;
+use App\Models\FoundItem; // Komponen ini akan menampilkan FoundItem
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\View\Component;
 
 class InformasiDetailItem extends Component
 {
+    public FoundItem $item; // Properti untuk menerima instance FoundItem
+
     /**
      * Create a new component instance.
+     *
+     * @param  \App\Models\FoundItem  $item  Item yang ditemukan untuk ditampilkan.
+     * @return void
      */
-    public function __construct()
+    public function __construct(FoundItem $item)
     {
-        //
+        $this->item = $item;
     }
 
     /**

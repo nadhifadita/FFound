@@ -1,53 +1,37 @@
-@extends('components.headerFooter_petugas')
+@extends('components.headerFooter_petugas') {{-- Pastikan layout ini benar --}}
+
+@section('title', 'Perbandingan Laporan')
 
 @section('content')
-<div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4">
+<div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4 py-8">
 
     {{-- Judul --}}
     <h1 class="text-3xl font-bold text-center mb-6">Report Details</h1>
 
-    {{-- Informasi Detail Item --}}
-    <x-informasi-detail-item
-        id_barang="001"
-        nama_barang="Laptop"
-        {{-- atribut status ga diisi karena anggepannya unfound
-        kalo ditulis true baru found --}}
-    />
+    {{-- Informasi Detail Item yang Ditemukan (initiating compare) --}}
+    {{-- Meneruskan FoundItem model ke komponen informasi-detail-item --}}
+    <x-informasi-detail-item :item="$foundItem" />
 
-    {{-- Grid Kartu Lost Item --}}
+    @if(session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative my-4" role="alert">
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-4" role="alert">
+            <span class="block sm:inline">{{ session('error') }}</span>
+        </div>
+    @endif
+
+    {{-- Grid Kartu Lost Item yang Cocok --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <x-item-card-petugas
-            name="Andi"
-            role="student"
-            date="22/12/2022"
-            image="images/laptop1.png"
-            title="Laptop"
-            location="Gedung F2.3"
-            description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-            showMatched="true"
-        />
-
-        <x-item-card-petugas
-            name="Andi"
-            role="student"
-            date="22/12/2022"
-            image="images/laptop1.png"
-            title="Laptop"
-            location="Gedung F2.3"
-            description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-            showMatched="true"
-        />
-
-        <x-item-card-petugas
-            name="Andi"
-            role="student"
-            date="22/12/2022"
-            image="images/laptop1.png"
-            title="Laptop"
-            location="Gedung F2.3"
-            description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-            showMatched="true"
-        />
+        @forelse ($matchingLostItems as $item)
+            {{-- Menggunakan komponen MatchingItemCard --}}
+            {{-- Meneruskan LostItem ($item) dan ID FoundItem yang menginisiasi ($foundItem->id) --}}
+            <x-matching-item-card :item="$item" :showMatchedButton="true" :initiatingFoundItemId="$foundItem->id" />
+        @empty
+            <p class="col-span-full text-center text-gray-500 text-lg">Tidak ada barang hilang yang cocok ditemukan.</p>
+        @endforelse
     </div>
 </div>
 @endsection
