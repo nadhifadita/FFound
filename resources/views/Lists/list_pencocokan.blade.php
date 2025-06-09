@@ -2,12 +2,24 @@
 @section('title', 'list_pencocokan')
 
 @section('content')
-<div class="p-6 text-center">
-    <h1 class="text-2xl font-bold mb-4 text-center">Report Details</h1>
+    
+<div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 mt-6">
+    <h2 class="text-xl font-semibold text-center mb-4">Report Details</h2>
 
-    <a href="{{ route('compare.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">
+    <div class="text-gray-700 space-y-2">
+        <p><strong>ID item:</strong> 001</p>
+        <p><strong>Item name:</strong> Laptop</p>
+        <p>
+            <strong>Status barang:</strong>
+            <span class="bg-red-100 text-red-600 text-sm font-medium px-2 py-1 rounded-full">Unfound</span>
+        </p>
+    </div>
+</div>
+
+</div>
+    {{-- <a href="{{ route('compare.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">
         Tambah Pencocokan
-    </a>
+    </a> --}}
 
     <div class="mt-4">
         @forelse ($compares as $compare)
@@ -17,7 +29,7 @@
                 <p><strong>Tanggal:</strong> {{ $compare->compared_at }}</p>
             </div>
         @empty
-            <p>Tidak ada data pencocokan.</p>
+            <p class="text-center">Tidak ada data pencocokan.</p>
         @endforelse
     </div>
 </div>

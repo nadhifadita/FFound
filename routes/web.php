@@ -70,6 +70,7 @@ Route::get('/list_pencocokan', [CompareController::class, 'index'])->name('compa
 Route::get('/compare/create', [CompareController::class, 'create'])->name('compare.create');
 Route::post('/compare', [CompareController::class, 'store'])->name('compare.store');
 
+
 /*
 |--------------------------------------------------------------------------
 | Reports Routes

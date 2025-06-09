@@ -129,7 +129,7 @@
             {{-- Tombol Compare, hanya terlihat jika $showCompareButton adalah true --}}
             @if ($showCompareButton)
                 {{-- Meneruskan ID dari item FoundItem ($item) ke rute --}}
-                <a href="{{ route('compare.index', $item->id) }}">
+                <a href="{{ route('compare.index', ['found_item_id' => $item->id]) }}">
                     <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-800">
                         Compare
                     </button>
