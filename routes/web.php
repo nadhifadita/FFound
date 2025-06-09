@@ -1,177 +1,140 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\LostItemController;
+use App\Http\Controllers\FoundItemController; 
 
-Route::get('/', function () {
-    return view('dashboard.dashboard_logout');
-});
-Route::get('/dashboard_login', function () {
-    return view('dashboard.dashboard_login');
-})->name('dashboard_login');
-Route::get('/dashboard_logout', function () {
-    return view('dashboard.dashboard_logout');
-})->name('dashboard_logout');
-Route::get('/dashboard_login_petugas', function () {
-    return view('dashboard.dashboard_login_petugas');
-})->name('dashboard_login_petugas');
+/*
+|--------------------------------------------------------------------------
+| Dashboard Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/found_item_details', function () {
-    return view('Details.found_item_details');
-});
-Route::get('/lost_item_details_petugas', function () {
-    return view('Details.lost_item_details_petugas');
-});
+Route::view('/', 'dashboard.dashboard_logout');
+Route::view('/dashboard_login', 'dashboard.dashboard_login')->name('dashboard_login');
+Route::view('/dashboard_logout', 'dashboard.dashboard_logout')->name('dashboard_logout');
+Route::view('/dashboard_login_petugas', 'dashboard.dashboard_login_petugas')->name('dashboard_login_petugas');
 
+/*
+|--------------------------------------------------------------------------
+| Details Routes
+|--------------------------------------------------------------------------
+*/
 
-#petugas
-Route::get('/profile_petugas', function () {
-    return view('profile.profile_petugas');
-})->name('profile_petugas');
-Route::get('/edit-profile_petugas', function () {
-    return view('profile.edit-profile_petugas');
-})->name('edit-profile_petugas');
-Route::get('/reports_found', function () {
-    return view('reports.reports_found');
-});
-Route::get('/reports_lost', function () {
-    return view('reports.reports_lost');
-});
-Route::get('/list_lost_petugas', function () {
-    return view('lists.list_lost_petugas');
-});
-Route::get('/list_found_petugas', function () {
-    return view('lists.list_found_petugas');
-});
-Route::get('/list_pencocokan', function() {
-    return view('lists.list_pencocokan');
-});
-Route::get('/list_history_petugas', function() {
-    return view('lists.list_history_petugas');
-});
-Route::get('/found_item_details', function() {
-    return view('Details.found_item_details');
-});
-Route::get('/lost_item_details_petugas', function() {
-    return view('Details.lost_item_details_petugas');
-});
-Route::get('/history_items_details_petugas', function() {
-    return view('Details.history_items_details_petugas');
-});
-Route::get('/history_item_details_petugas', function () {
-    return view('Details.history_item_details_petugas');
-});
+Route::view('/found_item_details', 'Details.found_item_details')->name('found_item_details');
+Route::view('/lost_item_details_petugas', 'Details.lost_item_details_petugas');
+Route::view('/lost_item_details', 'Details.lost_item_details');
+Route::view('/history_items_details_petugas', 'Details.history_items_details_petugas');
+Route::view('/history_item_details_petugas', 'Details.history_item_details_petugas');
+Route::view('/history_items_details', 'Details.history_items_details');
+Route::view('/history_item_details', 'Details.history_item_details');
 
-#Mahasiswa
-Route::get('/reports_mahasiswa', function () {
-    return view('reports.reports_mahasiswa');
-});
+/*
+|--------------------------------------------------------------------------
+| Profile Routes
+|--------------------------------------------------------------------------
+*/
 
-// Rute Login Anda (untuk menampilkan form) - Dibenahi ke 'auth.login'
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+Route::view('/profile', 'profile.profile')->name('profile');
+Route::view('/edit-profile', 'profile.edit-profile')->name('edit-profile');
+Route::view('/profile_petugas', 'profile.profile_petugas')->name('profile_petugas');
+Route::view('/edit-profile_petugas', 'profile.edit-profile_petugas')->name('edit-profile_petugas');
 
-// Rute POST untuk menangani submit form login, arahkan ke controller Breeze
+/*
+|--------------------------------------------------------------------------
+| List Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/list_lost', [LostItemController::class, 'index'])->name('list_lost');
+Route::get('/list_lost_petugas', [LostItemController::class, 'indexPetugas'])->name('list_lost_petugas');
+Route::view('/list_found', 'lists.list_found');
+Route::get('/list_found_petugas', [FoundItemController::class, 'indexPetugas'])->name('list_found_petugas');
+Route::get('/list_pencocokan', function() {return view('lists.list_pencocokan');})->name('list_pencocokan');
+Route::view('/list_history', 'lists.list_history');
+Route::view('/list_history_petugas', 'lists.list_history_petugas');
+
+/*
+|--------------------------------------------------------------------------
+| Reports Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::view('/reports_found', 'reports.reports_found')->name('reports_found');
+Route::view('/reports_lost', 'reports.reports_lost')->name('reports_lost');
+Route::view('/reports_mahasiswa', 'reports.reports_mahasiswa')->name('reports_mahasiswa');
+
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+*/
+
+// Login & Register Views
+Route::view('/login', 'auth.login')->name('login');
+Route::view('/register', 'auth.register')->name('register');
+Route::view('/forgot_password', 'auth.forgotPassword');
+
+// Auth Process
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-
-// Rute Register Anda (untuk menampilkan form) - Dibenahi ke 'auth.register'
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
-
-// Rute POST untuk menangani submit form register, arahkan ke controller Breeze
 Route::post('/register', [RegisteredUserController::class, 'store']);
-
-// Rute Logout, arahkan ke controller Breeze
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
+// Password Reset
+Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 
-// Rute Forgot Password - Dibenahi ke 'auth.forgotPassword'
-Route::get('/forgot_password', function () {
-    return view('auth.forgotPassword');
-});
-Route::get('/profile', function () {
-    return view('profile.profile');
-})->name('profile');
-Route::get('/edit-profile', function () {
-    return view('profile.edit-profile');
-})->name('edit-profile');
+/*
+|--------------------------------------------------------------------------
+| Lost Item Detail
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/list_lost', function () {
-    return view('lists.list_lost');
-});
-Route::get('/list_found', function() {
-    return view('lists.list_found');
-});
-Route::get('/list_history', function() {
-    return view('lists.list_history');
-});
-Route::get('/lost_item_details', function () {
-    return view('Details.lost_item_details');
-});
-Route::get('/history_items_details', function() {
-    return view('Details.history_items_details');
-});
-Route::get('/history_item_details', function () {
-    return view('Details.history_item_details');
-});
+Route::get('/lost-items/{lostItem}', [LostItemController::class, 'show'])->name('lost_item_details');
+Route::get('/found-items/{foundItem}', [App\Http\Controllers\FoundItemController::class, 'show'])->name('found_item_details');
 
-#route kosongan (biar nggak error aja)
-Route::get('/report-lost', function () {
-    return view('/');
-})->name('report-lost');
-Route::get('/lost-item-destroy', function () {
-    return view('/');
-})->name('lost-item.destroy');
-Route::get('/profile-update', function () {
-    return view('/');
-})->name('profile.update');
+/*
+|--------------------------------------------------------------------------
+| Empty Placeholder Routes
+|--------------------------------------------------------------------------
+*/
 
+Route::view('/report-lost', '/')->name('report-lost');
+Route::view('/lost-item-destroy', '/')->name('lost-item.destroy');
+Route::view('/profile-update', '/')->name('profile.update');
 
-# breeze (Bagian ini perlu disesuaikan jika Anda masih ingin menggunakan profile management Breeze)
-// Rute dashboard Breeze (jika Anda ingin menggunakannya sebagai fallback atau untuk tujuan lain)
-Route::get('/dashboard', function () {
-    // Anda bisa menambahkan logika pengalihan di sini juga berdasarkan peran
-    if (auth()->check()) { // Pastikan user sudah login
+/*
+|--------------------------------------------------------------------------
+| Authenticated Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware('auth')->group(function () {
+    // Dashboard redirect by role
+    Route::get('/dashboard', function () {
         if (auth()->user()->role === 'mahasiswa') {
             return redirect()->route('dashboard_login');
         } elseif (auth()->user()->role === 'petugas') {
             return redirect()->route('dashboard_login_petugas');
         }
-    }
-    // Jika tidak ada peran yang cocok atau tidak login, arahkan ke view default Breeze atau ke halaman utama
-    return view('dashboard'); // Ini view dashboard bawaan Breeze
-})->middleware(['auth', 'verified'])->name('dashboard');
+        return view('dashboard');
+    })->middleware(['verified'])->name('dashboard');
 
-
-Route::middleware('auth')->group(function () {
-    // Rute profile Breeze (jika Anda masih ingin menggunakannya)
-    // Pastikan nama rute ini unik dan tidak bertabrakan dengan rute profile Anda yang lain
+    // Breeze profile routes
     Route::get('/profile/breeze', [ProfileController::class, 'edit'])->name('profile.edit.breeze');
     Route::patch('/profile/breeze', [ProfileController::class, 'update'])->name('profile.update.breeze');
     Route::delete('/profile/breeze', [ProfileController::class, 'destroy'])->name('profile.destroy.breeze');
+
+    // Reports (POST)
+    Route::post('/reports/lost', [ReportController::class, 'storeLostItem'])->name('report.store_lost');
+    Route::post('/reports/found', [ReportController::class, 'storeFoundItem'])->name('report.store_found');
 });
-
-
-Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-            ->name('password.request');
-
-// Mengirim link reset password ke email
-Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-            ->name('password.email');
-
-// Form untuk mengatur password baru setelah menerima link reset
-Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-            ->name('password.reset');
-
-// Menyimpan password baru
-Route::post('reset-password', [NewPasswordController::class, 'store'])
-            ->name('password.update');
-
-// require __DIR__.'/auth.php'; // <-- Pastikan ini tetap di komentar atau dihapus

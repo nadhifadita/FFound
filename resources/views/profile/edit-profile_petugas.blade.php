@@ -43,23 +43,22 @@
                     @enderror
                 </div>
 
-                <!-- NIP Field -->
                 <div>
                     <label for="nip" class="block text-sm font-medium text-gray-700 mb-2">
                         NIP
                     </label>
-                    <input 
-                        id="nip" 
-                        name="nip" 
-                        type="text" 
-                        value="{{ old('nip', auth()->user()->nip ?? '') }}"
-                        required
-                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent @error('nip') border-red-500 @enderror"
+                    <input
+                        id="nip"
+                        name="nip"
+                        type="text"
+                        value="{{ auth()->user()->nim_nip ?? '' }}"
+                        readonly 
+                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 text-gray-600 cursor-not-allowed"
                         placeholder="NIP"
                     >
-                    @error('nip')
+                    {{-- @error('nip')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
                 </div>
 
                 <!-- Phone Number Field -->
@@ -108,7 +107,7 @@
                     </button>
                     <button 
                         type="button" 
-                        onclick="window.location.href='{{ route('profile') }}'"
+                        onclick="window.location.href='{{ url()->previous() }}'"
                         class="flex-1 bg-gray-300 text-gray-700 py-3 px-4 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium transition duration-200"
                     >
                         Cancel

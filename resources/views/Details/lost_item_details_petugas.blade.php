@@ -13,19 +13,12 @@
     </div>
 
     <!-- Konten utama ditaruh di tengah secara horizontal -->
-    <div class="flex justify-center mt-12">
-        <div class="max-w-4xl w-full">
+    <div class="flex justify-center mt-12 mb-12">
+        <div class="max-w-4xl w-max lg:w-screen p-8">
+
             <div class="text-left mb-8">
-                @include('components.itemDetails')
-                
-                <div class = "flex justify-between mt-4">
-                    <a href="{{ url()->previous() }}">
-                        <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-800">
-                            Return
-                        </button>
-                    </a>
-                </div>
-                
+                @include('components.itemDetails', ['item' => $lostItem])
+
             </div>
         </div>
     </div>

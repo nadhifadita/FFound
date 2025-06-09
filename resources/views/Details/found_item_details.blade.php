@@ -14,24 +14,9 @@
 
     <!-- Konten utama ditaruh di tengah secara horizontal -->
     <div class="flex justify-center mt-12">
-        <div class="max-w-4xl w-full">
+        <div class="max-w-4xl w-max lg:w-screen p-8">
             <div class="text-left mb-8">
-                @include('components.found-details')
-                
-                <div class = "flex justify-between mt-4">
-                    <a href="{{ url()->previous() }}">
-                        <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-800">
-                            Return
-                        </button>
-                    </a>
-
-                    <a href= "/list_pencocokan">
-                        <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-800">
-                            Compare
-                        </button>
-                    </a>
-                </div>
-                
+                @include('components.itemDetails', ['item' => $foundItem, 'showCompareButton' => true])
             </div>
         </div>
     </div>

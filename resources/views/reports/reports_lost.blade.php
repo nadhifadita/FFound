@@ -14,8 +14,7 @@
 
     <!-- Konten utama ditaruh di tengah secara horizontal -->
     <div class="w-full max-w-4xl text-center">
-        @include('components.report-content')
-        {{-- @include('components.report-content', ['action' => route('report.lost.store')]) --}}
+        @include('components.report-content', ['reportType' => 'lost'])
     </div>
 
 </div>

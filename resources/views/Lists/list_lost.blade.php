@@ -1,23 +1,28 @@
-@extends('components.headerFooter')
+@extends('components.headerFooter') {{-- Pastikan ini adalah layout yang benar --}}
+
+@section('title', 'Lost')
 
 @section('content')
-<div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4">
+<div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4 py-8">
 
     {{-- Judul di tengah --}}
     <h1 class="text-3xl font-bold text-center mb-6">Lost</h1>
 
-    {{-- Responsif layout kartu --}}
+    {{-- Responsif layout kartu (grid) --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <x-lost-item-card
-            name="Dhif"
-            role="student"
-            date="22/12/2022"
-            image="images/kunci2.png"
-            title="Kunci Motor Honda"
-            location="Gedung G1.2"
-            description="Kunci Motor dengan logo honda"
-        />
+        @forelse ($lostItems as $item)
+            {{-- Memanggil komponen Blade dengan meneruskan instance model LostItem --}}
+            <x-lost-item-card :item="$item" />
+        @empty
+            <p class="col-span-full text-center text-gray-500 text-lg">Tidak ada barang hilang yang ditemukan.</p>
+        @endforelse
     </div>
+
+    {{-- Opsional: Tautan Pagination (jika Anda menggunakan ->paginate() di controller) --}}
+    {{-- @if (method_exists($lostItems, 'links'))
+        <div class="mt-8">
+            {{ $lostItems->links() }}
+        </div>
+    @endif --}}
 </div>
 @endsection
