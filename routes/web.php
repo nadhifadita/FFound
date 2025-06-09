@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\LostItemController;
 use App\Http\Controllers\FoundItemController; 
+use App\Http\Controllers\HistoryController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::view('/dashboard_login_petugas', 'dashboard.dashboard_login_petugas')->na
 | Details Routes
 |--------------------------------------------------------------------------
 */
+
+// ----- page history
+Route::get('/list_history_petugas', [HistoryController::class, 'index'])->name('history.index');
 
 Route::view('/found_item_details', 'Details.found_item_details')->name('found_item_details');
 Route::view('/lost_item_details_petugas', 'Details.lost_item_details_petugas');
@@ -59,7 +63,7 @@ Route::view('/list_found', 'lists.list_found');
 Route::get('/list_found_petugas', [FoundItemController::class, 'indexPetugas'])->name('list_found_petugas');
 Route::get('/list_pencocokan', function() {return view('lists.list_pencocokan');})->name('list_pencocokan');
 Route::view('/list_history', 'lists.list_history');
-Route::view('/list_history_petugas', 'lists.list_history_petugas');
+// Route::view('/list_history_petugas', 'lists.list_history_petugas');
 
 /*
 |--------------------------------------------------------------------------
