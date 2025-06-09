@@ -1,6 +1,6 @@
 @extends('components.headerFooter')
 
-@section('title', 'Logout - FFOUND')
+@section('title', 'FFOUND')
 
 @section('content')
 <div class="min-h-screen bg-gray-50 flex items-center justify-center px-4 sm:px-4 lg:px-4">

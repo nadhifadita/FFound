@@ -19,6 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::get('reports_lost', function () {
         return view('reports.reports_lost');
     })->name('reports_lost');
+    Route::get('edit-profile', function () {
+        return view('profile.edit-profile');
+    })->name('edit-profile');
 
 });
 Route::middleware(['auth', 'admin'])->group(function () {

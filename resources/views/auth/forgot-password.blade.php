@@ -1,25 +1,53 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('components.headerFooter')
+
+@section('title', 'Forgot Password - FFOUND')
+
+@section('content')
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <!-- Logo Section -->
+        <div class="text-center">
+            
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Forgot Password</h2>
+        </div>
+
+        <!-- Login Form -->
+        <form class="space-y-6" action="{{ route('password.email') }}" method="POST">
+            @csrf
+            
+            <!-- Email Field -->
+            <div>
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                    Email
+                </label>
+                <input 
+                    id="email" 
+                    name="email" 
+                    type="email" 
+                    required 
+                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter your email"
+                >
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <p class="text-xs text-gray-500 mb-2">Enter your email and we'll send link to Reset your password</p>
+            </div>
+
+            
+
+            <!-- Buttons -->
+            <div class="flex space-x-4" action ='#'>
+                <button 
+                    type="submit" 
+                    class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"
+                >
+                    Send
+                </button>
+            </div>
+
+            
+        </form>
     </div>
+</div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection
