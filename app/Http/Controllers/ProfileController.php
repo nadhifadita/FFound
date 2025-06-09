@@ -31,10 +31,15 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+        $user = Auth::user();
+
+        $user->name = $request->input('name');
+        $user->nim_nip = $request->input('nip');
+        $user->phone = $request->input('phone');
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile')->with('status', 'profile-updated');
     }
 
     /**

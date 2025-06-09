@@ -17,6 +17,8 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'nip' => ['required', 'string', 'max:20'], // atau sesuai validasi Anda
+            'phone' => ['required', 'string', 'max:20'],
             'email' => [
                 'required',
                 'string',
