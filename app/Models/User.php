@@ -24,6 +24,9 @@ class User extends Authenticatable
         'is_admin',
         'email',
         'password',
+        'nim_nip',
+        'phone',
+        'role', // <-- BARIS INI DITAMBAHKAN!
     ];
 
     /**

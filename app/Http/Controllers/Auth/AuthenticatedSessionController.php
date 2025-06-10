@@ -24,11 +24,27 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Melakukan otentikasi pengguna
         $request->authenticate();
 
+        // Meregenerasi session ID untuk keamanan
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Mendapatkan pengguna yang baru saja login
+        $user = Auth::user();
+
+        // Logika pengalihan berdasarkan peran (role) pengguna
+        if ($user->role === 'mahasiswa') {
+            // Arahkan ke dashboard_login untuk mahasiswa
+            return redirect()->intended(route('dashboard_login'));
+        } elseif ($user->role === 'petugas') {
+            // Arahkan ke dashboard_login_petugas untuk petugas
+            return redirect()->intended(route('dashboard_login_petugas'));
+        }
+
+        // Jika peran tidak dikenali atau tidak ada, arahkan ke rute default (misalnya halaman utama)
+        // Anda bisa mengganti ini dengan route('dashboard') jika Anda masih punya dashboard Breeze default untuk kasus lain.
+        return redirect()->intended('/');
     }
 
     /**
@@ -42,6 +58,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        // Setelah logout, arahkan ke dashboard_logout yang sudah Anda definisikan
+        return redirect()->route('dashboard_logout');
     }
 }
