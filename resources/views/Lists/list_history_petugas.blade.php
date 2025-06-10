@@ -9,7 +9,7 @@
     <h1 class="text-3xl font-bold text-center mb-6">History</h1>
 
     {{-- Filter Dropdown (asumsi komponen x-filter-dropdown ada) --}}
-    <div class="flex justify-center mb-6">
+    <div class="flex justify-center mb-6 z-50">
         <x-filter-dropdown /> {{-- Anda perlu membuat komponen ini jika belum --}}
     </div>
 

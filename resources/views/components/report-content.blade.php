@@ -2,33 +2,33 @@
 
 @php
     $formActionRoute = '';
-    $locationLabel = 'Lokasi'; // Default
-    $dateLabel = 'Tanggal';    // Default
-    $isLostReport = false;     // Default
+    $locationLabel = 'Location'; // Default
+    $dateLabel = 'Date';         // Default
+    $isLostReport = false;       // Default
 
-    // Menentukan rute aksi form dan label/kondisi berdasarkan 'reportType'
+    // Determine form action route and labels based on 'reportType'
     if (isset($reportType)) {
         if ($reportType === 'mahasiswa' || $reportType === 'lost') {
             $formActionRoute = route('report.store_lost');
             $isLostReport = true;
-            $locationLabel = 'Lokasi Terakhir Dilihat';
-            $dateLabel = 'Tanggal Kehilangan';
+            $locationLabel = 'Last Seen Location';
+            $dateLabel = 'Date of Loss';
         } elseif ($reportType === 'found') {
             $formActionRoute = route('report.store_found');
             $isLostReport = false;
-            $locationLabel = 'Lokasi Ditemukan';
-            $dateLabel = 'Tanggal Ditemukan';
+            $locationLabel = 'Found Location';
+            $dateLabel = 'Date Found';
         }
     }
-    // Jika $reportType tidak diset, $formActionRoute akan kosong, yang akan menyebabkan error form.
-    // Pastikan $reportType selalu diset saat memanggil komponen ini dari view induk.
+    // If $reportType is not set, $formActionRoute remains empty, which will cause a form error.
+    // Make sure $reportType is always set when calling this component from the parent view.
 @endphp
 
 <div class="bg-white rounded-lg border border-gray-300 p-6 sm:p-8 shadow-sm mb-12">
     <form action="{{ $formActionRoute }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        {{-- Nama Kehilangan (hanya untuk mahasiswa atau lost) --}}
+        {{-- Owner Name (only for 'mahasiswa' or 'lost') --}}
         @if ($isLostReport)
             <div class="mb-6">
                 <div class="flex flex-col sm:flex-row sm:items-center">
@@ -36,8 +36,8 @@
                     <input
                         id="lost_by"
                         type="text"
-                        name="lost_by" {{-- Nama field baru --}}
-                        placeholder="Nama Orang yang Kehilangan Barang Ini"
+                        name="lost_by"
+                        placeholder="Name of the person who lost the item"
                         value="{{ old('lost_by') }}"
                         class="w-full sm:flex-1 sm:ml-4 px-4 py-3 bg-gray-200 rounded-lg border-0 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 @error('lost_by') border-red-500 @enderror"
                     >
@@ -48,7 +48,7 @@
             </div>
         @endif
 
-        {{-- Item Name (selalu ada) --}}
+        {{-- Item Name (always shown) --}}
         <div class="mb-6">
             <div class="flex flex-col sm:flex-row sm:items-center">
                 <label for="item_name" class="text-black font-medium text-lg sm:w-32 mb-2 sm:mb-0 text-left">Item :</label>
@@ -56,7 +56,7 @@
                     id="item_name"
                     type="text"
                     name="item_name"
-                    placeholder="Nama Barang"
+                    placeholder="Item Name"
                     value="{{ old('item_name') }}"
                     class="w-full sm:flex-1 sm:ml-4 px-4 py-3 bg-gray-200 rounded-lg border-0 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 @error('item_name') border-red-500 @enderror"
                 >
@@ -66,7 +66,7 @@
             @enderror
         </div>
 
-        {{-- Phone (kecuali jika found) --}}
+        {{-- Phone (except when 'found') --}}
         @if ($reportType !== 'found')
             <div class="mb-6">
                 <div class="flex flex-col sm:flex-row sm:items-center">
@@ -75,7 +75,7 @@
                         id="phone"
                         type="tel"
                         name="phone"
-                        placeholder="Nomor Telepon Kontak Pelapor"
+                        placeholder="Reporter’s Contact Number"
                         value="{{ old('phone') }}"
                         class="w-full sm:flex-1 sm:ml-4 px-4 py-3 bg-gray-200 rounded-lg border-0 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 @error('phone') border-red-500 @enderror"
                     >
@@ -86,7 +86,7 @@
             </div>
         @endif
 
-        {{-- Lokasi --}}
+        {{-- Location --}}
         <div class="mb-6">
             <div class="flex flex-col sm:flex-row sm:items-center">
                 <label for="location" class="text-black font-medium text-lg sm:w-32 mb-2 sm:mb-0 text-left">Location :</label>
@@ -94,7 +94,7 @@
                     id="location"
                     type="text"
                     name="location"
-                    placeholder="{{ $locationLabel }}" {{-- Placeholder dinamis --}}
+                    placeholder="{{ $locationLabel }}"
                     value="{{ old('location') }}"
                     class="w-full sm:flex-1 sm:ml-4 px-4 py-3 bg-gray-200 rounded-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 @error('location') border-red-500 @enderror"
                 >
@@ -104,7 +104,7 @@
             @enderror
         </div>
 
-        {{-- Tanggal --}}
+        {{-- Date --}}
         <div class="mb-6">
             <div class="flex flex-col sm:flex-row sm:items-center">
                 <label for="date" class="text-black font-medium text-lg sm:w-32 mb-2 sm:mb-0 text-left">Date :</label>
@@ -113,7 +113,7 @@
                     type="date"
                     name="date"
                     value="{{ old('date') }}"
-                    placeholder="{{ $dateLabel }}" {{-- Placeholder dinamis --}}
+                    placeholder="{{ $dateLabel }}"
                     class="w-full sm:flex-1 sm:ml-4 px-4 py-3 bg-gray-200 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-yellow-400 @error('date') border-red-500 @enderror"
                 >
             </div>
@@ -122,14 +122,14 @@
             @enderror
         </div>
 
-        {{-- Deskripsi --}}
+        {{-- Item Description --}}
         <div class="mb-6">
             <div class="flex flex-col sm:flex-row sm:items-start">
                 <label for="description" class="text-black font-medium text-lg sm:w-32 mb-2 sm:mb-0 text-left">Item Description :</label>
                 <textarea
                     id="description"
                     name="description"
-                    placeholder="Deskripsi Barang"
+                    placeholder="Description of the item"
                     rows="4"
                     class="w-full sm:flex-1 sm:ml-4 px-4 py-3 bg-gray-200 rounded-lg border-0 placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-yellow-400 @error('description') border-red-500 @enderror"
                 >{{ old('description') }}</textarea>
@@ -139,12 +139,12 @@
             @enderror
         </div>
 
-        {{-- Upload Foto --}}
+        {{-- Upload Photo --}}
         <div class="mb-8">
             <div class="flex flex-col sm:flex-row sm:items-start">
                 <div class="sm:w-32 mb-2 sm:mb-0">
                     <label class="text-black font-medium text-lg">Upload Photo :</label>
-                    <p class="text-sm text-gray-600 italic mt-1">(Upload jika ada)</p>
+                    <p class="text-sm text-gray-600 italic mt-1">(Upload if available)</p>
                 </div>
                 <div class="w-full sm:flex-1 sm:ml-4">
                     <label for="photo" class="cursor-pointer block">
@@ -169,7 +169,7 @@
             @enderror
         </div>
 
-        {{-- Tombol --}}
+        {{-- Buttons --}}
         <div class="flex flex-col sm:flex-row justify-center gap-4">
             <button type="submit"
                 class="w-full bg-gray-800 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors">
