@@ -14,7 +14,7 @@
             {{-- Pastikan Anda sudah membuat komponen FoundItemCard --}}
             <x-found-item-card :item="$item" :isPetugasViewer="true" />
         @empty
-            <p class="col-span-full text-center text-gray-500 text-lg">Tidak ada barang ditemukan.</p> {{-- Pesan jika daftar kosong --}}
+            <p class="col-span-full text-center text-gray-500 text-lg">No Found Reports.</p> {{-- Pesan jika daftar kosong --}}
         @endforelse
     </div>
 

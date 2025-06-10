@@ -9,7 +9,7 @@
     <h1 class="text-3xl font-bold text-center mb-6">History</h1>
 
     {{-- Filter Dropdown (asumsi komponen x-filter-dropdown ada) --}}
-    <div class="flex justify-center mb-6 z-50">
+    <div class="flex justify-center mb-6 z-20">
         <x-filter-dropdown /> {{-- Anda perlu membuat komponen ini jika belum --}}
     </div>
 
@@ -20,7 +20,7 @@
             {{-- Meneruskan variabel $item (instance HistoryItem) dan flag showResolved --}}
             <x-history-item-card-petugas :item="$item" :showResolved="true" />
         @empty
-            <p class="col-span-full text-center text-gray-500 text-lg">Tidak ada riwayat pencocokan yang ditemukan.</p>
+            <p class="col-span-full text-center text-gray-500 text-lg">No History.</p>
         @endforelse
     </div>
 

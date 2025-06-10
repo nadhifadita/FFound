@@ -30,7 +30,7 @@
             {{-- Meneruskan LostItem ($item) dan ID FoundItem yang menginisiasi ($foundItem->id) --}}
             <x-matching-item-card :item="$item" :showMatchedButton="true" :initiatingFoundItemId="$foundItem->id" />
         @empty
-            <p class="col-span-full text-center text-gray-500 text-lg">Tidak ada barang hilang yang cocok ditemukan.</p>
+            <p class="col-span-full text-center text-gray-500 text-lg">No Lost Reports.</p>
         @endforelse
     </div>
 </div>

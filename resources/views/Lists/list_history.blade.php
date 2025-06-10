@@ -1,47 +1,33 @@
-@extends('components.headerFooter')
+@extends('components.headerFooter') {{-- Benar untuk mahasiswa --}}
+
+@section('title', 'Riwayat Pencocokan') {{-- Judul lebih spesifik --}}
 
 @section('content')
-<div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4">
-    <h1 class="text-3xl font-bold text-center mb-6">History</h1>
+<div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4 py-8">
+
+    {{-- Judul di tengah --}}
+    <h1 class="text-3xl font-bold text-center mb-6">History</h1> {{-- Judul lebih spesifik --}}
 
     {{-- Filter Dropdown --}}
-    <div class="flex justify-center mb-6">
-        <x-filter-dropdown />
+    <div class="flex justify-center mb-6 z-20">
+        <x-filter-dropdown /> {{-- Komponen ini diasumsikan generik --}}
     </div>
 
-    {{-- Grid Kartu Lost Item --}}
+    {{-- Grid Kartu History Item --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <x-history-item-card
-        name="Andi"
-        role="student"
-        date="22/12/2022"
-        image="images/laptop1.png"
-        title="Laptop"
-        location="Gedung F2.3"
-        description="Laptop Axioo warna merah dengan nama rudi di bagian bawah laptop, background naruto"
-        showResolved
-    />
-    <x-history-item-card
-        name="Qih"
-        role="student"
-        date="22/12/2022"
-        image="images/kunci1.png"
-        title="Kunci Motor Honda"
-        location="Parkiran Gedung A"
-        description="Kunci Motor dengan logo honda"
-        showResolved
-    />
-
-    <x-history-item-card
-        name="Dhif"
-        role="student"
-        date="22/12/2022"
-        image="images/kunci2.png"
-        title="Kunci Motor Honda"
-        location="Gedung G1.2"
-        description="Kunci Motor dengan logo honda"
-        />
-    <!-- dst -->
+        @forelse ($historyItems as $item)
+            {{-- Menggunakan komponen HistoryItemCard yang generik --}}
+            <x-history-item-card :item="$item" /> {{-- Tidak perlu showResolved prop untuk card umum --}}
+        @empty
+            <p class="col-span-full text-center text-gray-500 text-lg">No History.</p>
+        @endforelse
     </div>
+
+    {{-- Opsional: Tautan Pagination (jika Anda menggunakan ->paginate() di controller) --}}
+    {{-- @if (method_exists($historyItems, 'links'))
+        <div class="mt-8">
+            {{ $historyItems->links() }}
+        </div>
+    @endif --}}
 </div>
 @endsection

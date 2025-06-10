@@ -43,7 +43,7 @@
                     <a href="/reports_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Report Found</a>
                     <a href="/list_found_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Found List</a>
                     <a href="/list_history_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">History</a>
-                    <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Profile</a>
+                    <a href="/profile_petugas" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1">Profile</a>
                 </nav>
             </div>
         </div>

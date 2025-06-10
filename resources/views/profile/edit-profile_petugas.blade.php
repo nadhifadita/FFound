@@ -19,11 +19,11 @@
                 </div>
             </div>
 
-            <!-- Profile Form {{ route('profile.update') }} -->
-            <form action="javascript:void(0)" method="POST" class="space-y-6">
+            <!-- Profile Form -->
+            <form action="{{ route('profile.update.breeze') }}" method="POST" class="space-y-6">
                 @csrf
-                @method('PUT')
-                
+                @method('PATCH')
+
                 <!-- Name Field -->
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-2">

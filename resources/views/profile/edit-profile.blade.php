@@ -19,10 +19,9 @@
                 </div>
             </div>
 
-            <!-- Profile Form {{ route('profile.update') }} -->
-            <form action="javascript:void(0)" method="POST" class="space-y-6">
+            <form action="profile.update.breeze" method="POST" class="space-y-6">
                 @csrf
-                @method('PUT')
+                @method('PATCH')
                 
                 <!-- Name Field -->
                 <div>
@@ -43,7 +42,7 @@
                     @enderror
                 </div>
 
-                <!-- NIM Field -->
+                <!-- NIM Field (Read-only) -->
                 <div>
                     <label for="nim" class="block text-sm font-medium text-gray-700 mb-2">
                         NIM
@@ -52,15 +51,14 @@
                         id="nim" 
                         name="nim" 
                         type="text" 
-                        value="{{ old('nim', auth()->user()->nim ?? '') }}"
-                        required
-                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent @error('nim') border-red-500 @enderror"
+                        value="{{ old('nim', auth()->user()->nim_nip ?? '') }}" 
+                        readonly
+                        class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-200 text-gray-600 cursor-not-allowed focus:outline-none"
                         placeholder="NIM"
                     >
-                    @error('nim')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    <p class="mt-1 text-xs text-gray-500">NIM cannot be edited</p>
                 </div>
+
 
                 <!-- Phone Number Field -->
                 <div>

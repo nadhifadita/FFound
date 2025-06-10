@@ -14,7 +14,7 @@
             {{-- Memanggil komponen Blade dengan meneruskan instance model LostItem --}}
             <x-lost-item-card :item="$item" />
         @empty
-            <p class="col-span-full text-center text-gray-500 text-lg">Tidak ada barang hilang yang ditemukan.</p>
+            <p class="col-span-full text-center text-gray-500 text-lg">No Lost Reports.</p>
         @endforelse
     </div>
 
