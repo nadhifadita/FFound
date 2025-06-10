@@ -17,7 +17,7 @@ use App\Http\Controllers\HistoryItemController;
 | Rute Publik (Dapat Diakses Semua Orang)
 |--------------------------------------------------------------------------
 */
-Route::view('/', 'dashboard.dashboard_logout')->name('dashboard_logout');
+Route::view('/', 'welcome')->name('welcome');
 
 // Detail Item yang bisa dilihat publik
 Route::get('/lost-items/{lostItem}', [LostItemController::class, 'show'])->name('lost_item_details');

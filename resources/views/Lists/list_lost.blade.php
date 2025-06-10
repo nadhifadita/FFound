@@ -18,11 +18,5 @@
         @endforelse
     </div>
 
-    {{-- Opsional: Tautan Pagination (jika Anda menggunakan ->paginate() di controller) --}}
-    {{-- @if (method_exists($lostItems, 'links'))
-        <div class="mt-8">
-            {{ $lostItems->links() }}
-        </div>
-    @endif --}}
 </div>
 @endsection

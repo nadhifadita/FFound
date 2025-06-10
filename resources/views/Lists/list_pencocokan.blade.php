@@ -1,4 +1,4 @@
-@extends('components.headerFooter_petugas') {{-- Pastikan layout ini benar --}}
+@extends('components.headerFooter') {{-- Pastikan layout ini benar --}}
 
 @section('title', 'Perbandingan Laporan')
 

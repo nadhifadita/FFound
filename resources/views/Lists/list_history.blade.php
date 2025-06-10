@@ -1,23 +1,24 @@
-@extends('components.headerFooter') {{-- Benar untuk mahasiswa --}}
+@extends('components.headerFooter')
 
-@section('title', 'Riwayat Pencocokan') {{-- Judul lebih spesifik --}}
+@section('title', 'History')
 
 @section('content')
 <div class="min-h-screen flex flex-col justify-center bg-gray-50 px-4 sm:px-4 lg:px-4 py-8">
 
     {{-- Judul di tengah --}}
-    <h1 class="text-3xl font-bold text-center mb-6">History</h1> {{-- Judul lebih spesifik --}}
+    <h1 class="text-3xl font-bold text-center mb-6">History</h1>
 
-    {{-- Filter Dropdown --}}
+    {{-- Filter Dropdown (asumsi komponen x-filter-dropdown ada) --}}
     <div class="flex justify-center mb-6 z-20">
-        <x-filter-dropdown /> {{-- Komponen ini diasumsikan generik --}}
+        <x-filter-dropdown /> {{-- Anda perlu membuat komponen ini jika belum --}}
     </div>
 
     {{-- Grid Kartu History Item --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($historyItems as $item)
-            {{-- Menggunakan komponen HistoryItemCard yang generik --}}
-            <x-history-item-card :item="$item" /> {{-- Tidak perlu showResolved prop untuk card umum --}}
+            {{-- Memanggil komponen HistoryItemCardPetugas --}}
+            {{-- Meneruskan variabel $item (instance HistoryItem) dan flag showResolved --}}
+            <x-history-item-card-petugas :item="$item" :showResolved="true" />
         @empty
             <p class="col-span-full text-center text-gray-500 text-lg">No History.</p>
         @endforelse
