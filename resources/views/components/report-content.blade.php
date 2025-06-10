@@ -28,6 +28,10 @@
     <form action="{{ $formActionRoute }}" method="POST" enctype="multipart/form-data">
         @csrf
 
+        {{-- Hidden redirect input --}}
+        <input type="hidden" name="redirect_to"
+            value="{{ $reportType === 'found' ? route('list_found_petugas') : route('list_lost') }}">
+
         {{-- Owner Name (only for 'mahasiswa' or 'lost') --}}
         @if ($isLostReport)
             <div class="mb-6">
@@ -162,6 +166,7 @@
                         accept="image/*"
                         class="hidden"
                     >
+                    <span id="photo-name" class="block mt-2 text-sm text-gray-600"></span>
                 </div>
             </div>
             @error('photo')
@@ -182,3 +187,12 @@
         </div>
     </form>
 </div>
+
+<script>
+    document.getElementById('photo').addEventListener('change', function (event) {
+        const fileInput = event.target;
+        const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file selected';
+        document.getElementById('photo-name').textContent = fileName;
+    });
+</script>
+

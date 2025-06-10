@@ -41,8 +41,10 @@ class ReportController extends Controller
             'description' => $validatedData['description'],
             'photo_path' => $photoPath,
         ]);
+        // Redirect berdasarkan role
+        $route = auth()->user()->role === 'petugas' ? 'list_lost_petugas' : 'list_lost';
 
-        return redirect()->back()->with('success', 'Laporan barang hilang berhasil dikirim!');
+        return redirect()->route($route)->with('success', 'Laporan barang hilang berhasil dikirim.');
     }
 
     /**
@@ -73,6 +75,9 @@ class ReportController extends Controller
             'photo_path' => $photoPath,
         ]);
 
-        return redirect()->back()->with('success', 'Laporan barang ditemukan berhasil dikirim!');
+        // Redirect berdasarkan role
+        $route = 'list_found_petugas';
+
+        return redirect()->route($route)->with('success', 'Laporan barang ditemukan berhasil dikirim.');
     }
 }
