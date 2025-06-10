@@ -27,12 +27,18 @@ class HistoryItemController extends Controller
      */
     public function indexPetugas(Request $request)
     {
-        $query = HistoryItem::with(['lostItem', 'foundItem']);
+        $query = HistoryItem::with([
+            'lostItem' => function($query) {
+                $query->withTrashed(); // Sertakan item yang di-soft-delete
+            },
+            'foundItem' => function($query) {
+                $query->withTrashed(); // Sertakan item yang di-soft-delete
+            }
+        ]);
         $sortOrder = $request->query('sort_order', 'desc');
         if (!in_array($sortOrder, ['asc', 'desc'])) { $sortOrder = 'desc'; }
         $query->orderBy('resolved_date', $sortOrder);
         $historyItems = $query->get();
-
         return view('lists.list_history_petugas', compact('historyItems'));
     }
 
@@ -47,7 +53,16 @@ class HistoryItemController extends Controller
     {
         // PENTING: Eager load relasi 'lostItem', 'foundItem', dan 'user' di dalamnya.
         // Ini memastikan data LostItem, FoundItem, dan informasi pelapornya tersedia di view.
-        $historyItem->load(['lostItem.user', 'foundItem.user']);
+        $historyItem->load([
+            'lostItem' => function($query) {
+                $query->withTrashed();
+            },
+            'foundItem' => function($query) {
+                $query->withTrashed();
+            },
+            'lostItem.user', // User pelapor lost item (tidak perlu withTrashed kecuali user juga soft-delete)
+            'foundItem.user', // User pelapor found item
+        ]);
 
         // Logic untuk memilih view berdasarkan role pengguna yang sedang login (viewer)
         // Jika petugas, tampilkan view detail khusus petugas

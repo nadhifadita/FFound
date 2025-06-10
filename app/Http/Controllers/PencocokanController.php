@@ -17,13 +17,24 @@ class PencocokanController extends Controller
     {
         $foundItem->load('user');
 
-        // 1. Ambil ID dari semua LostItem yang sudah ada di tabel history_items
-        $matchedLostItemIds = HistoryItem::pluck('lost_item_id')->toArray();
+        // --- PERBAIKAN DI SINI: Gunakan filter() untuk menghapus NULL dari hasil pluck ---
+        // 1. Ambil ID dari semua LostItem yang sudah ada di tabel history_items.
+        //    '.filter()' akan menghapus nilai NULL dari koleksi sebelum diubah menjadi array.
+        $matchedLostItemIds = HistoryItem::pluck('lost_item_id')->filter()->toArray();
 
-        // 2. Ambil semua LostItem (atau yang sesuai kriteria), tetapi KECUALIKAN yang sudah cocok
+        // 2. Ambil semua LostItem (yang sesuai kriteria), tetapi KECUALIKAN yang sudah cocok.
+        //    Sekarang $matchedLostItemIds hanya berisi ID integer yang valid, membuat whereNotIn efektif.
         $matchingLostItems = LostItem::whereNotIn('id', $matchedLostItemIds)
                                     ->orderBy('date', 'desc')
                                     ->get();
+
+        // --- DIAGNOSA (setelah perbaikan, jika masih ada masalah) ---
+        // dd([
+        //     'FoundItem (Initiating Comparison)' => $foundItem->toArray(),
+        //     'Cleaned Matched Lost Item IDs (used for exclusion)' => $matchedLostItemIds, // Periksa apakah ini sekarang array ID integer tanpa NULL
+        //     'Final Matching Lost Items' => $matchingLostItems->toArray(),
+        // ]);
+        // --- AKHIR DIAGNOSA ---
 
         return view('lists.list_pencocokan', compact('foundItem', 'matchingLostItems'));
     }
@@ -31,9 +42,6 @@ class PencocokanController extends Controller
     /**
      * Menandai item hilang dan ditemukan sebagai cocok dan membuat entri di HistoryItem.
      * Setelah itu, record aslinya akan dihapus dari tabel LostItem dan FoundItem.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
      */
      public function markMatched(Request $request)
     {
@@ -45,7 +53,6 @@ class PencocokanController extends Controller
         $lostItemToDelete = LostItem::find($request->lost_item_id);
         $foundItemToDelete = FoundItem::find($request->found_item_id);
 
-        // Periksa kondisi duplikasi terlebih dahulu
         $existingHistory = HistoryItem::where('found_item_id', $request->found_item_id)
                                     ->where('lost_item_id', $request->lost_item_id)
                                     ->first();
@@ -53,7 +60,6 @@ class PencocokanController extends Controller
             return redirect()->back()->with('error', 'Item ini sudah ditandai cocok sebelumnya.');
         }
 
-        // Pastikan kedua item ditemukan sebelum mencoba membuat HistoryItem dan menghapus
         if ($lostItemToDelete && $foundItemToDelete) {
             try {
                 $historyItem = HistoryItem::create([
@@ -63,19 +69,19 @@ class PencocokanController extends Controller
                     'notes' => 'Dicocokkan secara manual oleh petugas.'
                 ]);
 
+                // BARIS INI AKAN MENGHAPUS FISIK (JIKA SOFT DELETES TIDAK AKTIF)
                 $lostItemToDelete->delete();
                 $foundItemToDelete->delete();
 
-                $message = 'Barang berhasil ditandai cocok dan dihapus dari daftar aktif.';
+                $message = 'Barang berhasil ditandai cocok dan dipindahkan ke riwayat.';
                 return redirect()->route('list_history_petugas')->with('success', $message);
 
             } catch (\Exception $e) {
-                // Ini akan menangkap dan menampilkan error jika ada masalah database atau MassAssignmentException
+                // Jika ini terpanggil, berarti ada error saat create HistoryItem atau delete
                 dd("Error di proses creation/deletion: " . $e->getMessage(), $e->getTrace());
             }
 
         } else {
-            // Ini terjadi jika find() mengembalikan null, padahal validasi exists seharusnya mencegahnya
             $message = 'Terjadi kesalahan: Barang hilang atau ditemukan tidak ditemukan untuk dihapus.';
             return redirect()->back()->with('error', $message);
         }
