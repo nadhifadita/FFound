@@ -8,9 +8,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\LostItem;
+use App\Models\FoundItem; 
 
 class ProfileController extends Controller
 {
+
+    public function index(): View
+    {
+        $user = Auth::user();
+
+        $lostItems = LostItem::where('user_id', $user->id)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+
+        $foundItems = FoundItem::where('user_id', $user->id)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+
+        return view('profile.profile', compact('user', 'lostItems', 'foundItems'));
+    }
+
+
     /**
      * Display the user's profile form.
      */
