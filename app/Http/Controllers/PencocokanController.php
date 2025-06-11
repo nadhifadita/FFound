@@ -74,7 +74,7 @@ class PencocokanController extends Controller
                 $foundItemToDelete->delete();
 
                 $message = 'Barang berhasil ditandai cocok dan dipindahkan ke riwayat.';
-                return redirect()->route('list_history_petugas')->with('success', $message);
+                return redirect()->route('list_history')->with('success', $message);
 
             } catch (\Exception $e) {
                 // Jika ini terpanggil, berarti ada error saat create HistoryItem atau delete

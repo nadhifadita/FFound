@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class FoundItemController extends Controller
 {
     /**
-     * Menampilkan daftar barang ditemukan untuk user umum (mahasiswa).
+     * Menampilkan daftar barang ditemukan.
      * (Untuk list_found.blade.php)
      */
     public function index()
@@ -23,19 +23,6 @@ class FoundItemController extends Controller
     }
 
     /**
-     * Menampilkan daftar barang ditemukan khusus untuk petugas/admin.
-     * (Untuk list_found_petugas.blade.php)
-     */
-    public function indexPetugas()
-    {
-        // Ambil semua barang ditemukan. Anda bisa menambahkan filter, sorting, atau pagination di sini.
-        $foundItems = FoundItem::orderBy('created_at', 'desc')->get(); // Atau ->paginate(10)
-
-        // Teruskan data yang diambil ke view 'lists.list_found_petugas'
-        return view('lists.list_found_petugas', compact('foundItems'));
-    }
-
-    /**
      * Menampilkan detail item.
      * Ini akan memilih view detail yang benar berdasarkan role pengguna.
      */
@@ -45,10 +32,6 @@ class FoundItemController extends Controller
         $foundItem->load('user');
 
         // Logic untuk memilih view berdasarkan role pengguna yang sedang login (viewer)
-        if (Auth::check() && Auth::user()->role === 'petugas') {
-            return view('Details.found_item_details', compact('foundItem'));
-        } else {
-            return view('Details.found_item_details', compact('foundItem'));
-        }
+        return view('Details.found_item_details', compact('foundItem'));
     }
 }
