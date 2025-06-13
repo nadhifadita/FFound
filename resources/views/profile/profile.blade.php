@@ -25,30 +25,11 @@
                     </div>
                 @endforelse
             </div>
-
-            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-8">Lost Item</h2>
-            <div class="space-y-4">
-                @forelse($lostItems as $item)
-                    <x-lost-item-card :item="$item" :isPetugasViewer="false" />
-                @empty
-                    <div class="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 text-center">
-                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-search text-2xl text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-medium text-gray-900 mb-2">No Lost Item.</h3>
-                        <p class="text-gray-500 mb-4">Report your Lost Item!</p>
-                        <a href="{{ route('reports_found') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                            <i class="fas fa-plus mr-2"></i>
-                            Report Lost Item
-                        </a>
-                    </div>
-                @endforelse
-            </div>
         </div>
 
         {{-- Kolom Kanan --}}
         <div class="space-y-6">
-            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Profil Saya</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Profile</h2>
             
             <div class="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 shadow-sm">
                 <div class="flex justify-center mb-6 sm:mb-8">

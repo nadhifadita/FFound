@@ -9,27 +9,27 @@
 
     // Dynamically set labels based on item type.
     if ($isLostItem) {
-        $idLabel = 'ID Barang Hilang';
-        $locationLabel = 'Lokasi Terakhir Dilihat';
-        $dateLabel = 'Tanggal Kehilangan';
+        $idLabel = 'ID Lost Item';
+        $locationLabel = 'Last seen Location';
+        $dateLabel = 'Date Lost';
     } elseif ($isFoundItem) {
-        $idLabel = 'ID Barang Ditemukan';
-        $locationLabel = 'Lokasi Ditemukan';
-        $dateLabel = 'Tanggal Ditemukan';
+        $idLabel = 'ID Found Item';
+        $locationLabel = 'Found Location';
+        $dateLabel = 'Date Found';
     } elseif ($isHistoryItem) { // For History items, labels might be more generic
-        $idLabel = 'ID Laporan Pencocokan'; // Atau ID Match
-        $locationLabel = 'Lokasi Kejadian'; // Atau biarkan kosong/sesuaikan
-        $dateLabel = 'Tanggal Kejadian'; // Atau biarkan kosong/sesuaikan
+        $idLabel = 'ID Report Match'; // Atau ID Match
+        $locationLabel = 'Location'; // Atau biarkan kosong/sesuaikan
+        $dateLabel = 'Date'; // Atau biarkan kosong/sesuaikan
     } else {
         // Fallback for unknown item type (should not happen if all are covered)
         $idLabel = 'ID Item';
-        $locationLabel = 'Lokasi';
-        $dateLabel = 'Tanggal';
+        $locationLabel = 'Location';
+        $dateLabel = 'Date';
     }
 
-    $itemNameLabel = 'Nama Item'; // Common for all
-    $reporterNameLabel = 'Dilaporkan oleh'; // Common label for the reporter.
-    $phoneLabel = 'Nomor Telepon Pelapor'; // Common label, but source differs
+    $itemNameLabel = 'Item Name'; // Common for all
+    $reporterNameLabel = 'Report by'; // Common label for the reporter.
+    $phoneLabel = 'Reporter phone number'; // Common label, but source differs
 
     // Variable to control 'Compare' button visibility.
     // It will be true if passed from the parent, otherwise defaults to false.
@@ -74,7 +74,7 @@
         {{-- Nama Kehilangan (Owner Name - specific to LostItem only) --}}
         @if ($isLostItem && isset($item->owner_name) && $item->owner_name)
             <div class="border-b border-gray-200 pb-3">
-                <label class="text-red-500 font-medium text-sm">* Nama Orang yang Kehilangan</label>
+                <label class="text-red-500 font-medium text-sm">* Lost By Name</label>
                 <p class="text-gray-800 text-lg mt-1">{{ $item->owner_name }}</p>
             </div>
         @endif
@@ -85,12 +85,12 @@
         </div>
 
         <div class="border-b border-gray-200 pb-3">
-            <label class="text-red-500 font-medium text-sm">* Deskripsi</label>
+            <label class="text-red-500 font-medium text-sm">* Description</label>
             <p class="text-gray-700 text-base mt-2 leading-relaxed">{{ $item->description ?? 'Tidak ada deskripsi.' }}</p>
         </div>
 
         <div class="border-b border-gray-200 pb-3">
-            <label class="text-red-500 font-medium text-sm">* Lokasi</label>
+            <label class="text-red-500 font-medium text-sm">* Location</label>
             <p class="text-gray-800 text-lg mt-1">{{ $item->location }}</p>
         </div>
 
