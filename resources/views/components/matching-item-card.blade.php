@@ -20,11 +20,11 @@
         <h3 class="text-xl font-semibold text-gray-800 mb-2 truncate">{{ $item->item_name }}</h3>
 
         @if ($isLostItem && $item->owner_name)
-            <p class="text-sm text-gray-600">Hilang oleh: <span class="font-medium">{{ $item->owner_name }}</span></p>
+            <p class="text-sm text-gray-600">Lost By: <span class="font-medium">{{ $item->owner_name }}</span></p>
         @endif
 
-        <p class="text-sm text-gray-600 mt-1">Lokasi {{ $labelPrefix }}: <span class="font-medium">{{ $item->location }}</span></p>
-        <p class="text-sm text-gray-600">Tanggal {{ $labelPrefix }}: <span class="font-medium">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</span></p>
+        <p class="text-sm text-gray-600 mt-1">Location {{ $labelPrefix }}: <span class="font-medium">{{ $item->location }}</span></p>
+        <p class="text-sm text-gray-600">Date {{ $labelPrefix }}: <span class="font-medium">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</span></p>
 
         @if ($item->description)
             <p class="text-xs text-gray-500 mt-2 line-clamp-2">{{ $item->description }}</p>
