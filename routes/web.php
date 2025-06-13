@@ -81,7 +81,7 @@ Route::middleware('auth')->group(function () {
 
     // Rute update profil Breeze (action form update-profile-information-form mengarah ke sini)
     // Ini menangani update untuk mahasiswa dan petugas, karena ProfileController@update sudah ada logikanya
-    Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update.breeze');
+    Route::patch('/profile/edit-profile', [ProfileController::class, 'update'])->name('profile.edit-profile.breeze');
 
     // Rute update password dari Breeze (action form update-password-form mengarah ke sini)
     Route::put('/password', [ProfileController::class, 'updatePassword'])->name('password.update');
@@ -112,8 +112,9 @@ Route::middleware(['auth', 'role:mahasiswa'])->group(function () {
     // Route::get('/history-items/{historyItem}', [HistoryItemController::class, 'show'])->name('history_item_details'); // Sudah di rute umum
 
     // Profil Mahasiswa
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile'); // Tampilan profil
-    Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('profile.edit'); // Form edit profil
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('edit-profile'); // Tambahan
+
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); // Sudah di rute terotentikasi umum
 });
 
