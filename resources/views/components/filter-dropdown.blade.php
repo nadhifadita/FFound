@@ -10,12 +10,10 @@
     <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden" role="menu" aria-orientation="vertical" aria-labelledby="filter-menu-button" id="filter-dropdown-menu">
         <div class="py-1">
             @php
-                // Ambil nama rute saat ini dengan aman.
-                // Jika tidak ada rute aktif, atau rute tidak diberi nama, maka akan null.
                 $currentRouteName = request()->route() ? request()->route()->getName() : null;
             @endphp
 
-            @if ($currentRouteName) {{-- Hanya tampilkan link jika nama rute saat ini ada --}}
+            @if ($currentRouteName) 
                 {{-- Link untuk Ascending (terlama ke terbaru) --}}
                 <a href="{{ route($currentRouteName, array_merge(request()->query(), ['sort_order' => 'asc'])) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Date Ascending (Oldest)</a>
                 {{-- Link untuk Descending (terbaru ke terlama) --}}
@@ -29,12 +27,10 @@
 </div>
 
 <script>
-    // JavaScript untuk toggle dropdown
     function toggleDropdown(id) {
         document.getElementById(id).classList.toggle('hidden');
     }
 
-    // JavaScript untuk menutup dropdown jika user mengklik di luar area dropdown
     window.onclick = function(event) {
         if (!event.target.matches('#filter-menu-button')) {
             var dropdowns = document.getElementsByClassName("origin-top-right");

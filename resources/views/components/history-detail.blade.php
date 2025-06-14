@@ -10,7 +10,7 @@
         'lost_date' => '01 06 2035',
         'found_date' => '04 06 2035',
         'phone_number' => '081234567890',
-        'photo' => null // Nanti bisa diisi dengan path foto dari database
+        'photo' => null 
     ];
 @endphp
 

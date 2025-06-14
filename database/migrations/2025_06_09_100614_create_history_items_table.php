@@ -10,10 +10,8 @@ return new class extends Migration
     {
         Schema::create('history_items', function (Blueprint $table) {
             $table->id();
-            // --- KEMBALIKAN KE DEFINISI FOREIGN ID STANDAR (TIDAK NULLABLE) ---
-            $table->foreignId('lost_item_id')->constrained('lost_items'); // Ini akan default ke onDelete('restrict')
-            $table->foreignId('found_item_id')->constrained('found_items'); // Ini akan default ke onDelete('restrict')
-            // --- AKHIR PERUBAHAN ---
+            $table->foreignId('lost_item_id')->constrained('lost_items'); 
+            $table->foreignId('found_item_id')->constrained('found_items'); 
             $table->date('resolved_date');
             $table->text('notes')->nullable();
             $table->timestamps();

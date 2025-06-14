@@ -3,14 +3,14 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use App\Models\FoundItem; // Penting: Pastikan Anda mengimpor model FoundItem
+use App\Models\FoundItem; 
 use Closure;
 use Illuminate\Contracts\View\View;
 
 class FoundItemCard extends Component
 {
-    public FoundItem $item; // Properti publik untuk menerima instance model FoundItem
-    public bool $isPetugasViewer; // Properti opsional untuk menentukan viewer
+    public FoundItem $item; 
+    public bool $isPetugasViewer;
 
     /**
      * Create a new component instance.

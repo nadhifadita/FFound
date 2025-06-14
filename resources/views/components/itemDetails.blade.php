@@ -2,12 +2,10 @@
 {{-- This component expects a $item variable, which MUST be an instance of App\Models\LostItem, App\Models\FoundItem, or App\Models\HistoryItem --}}
 
 @php
-    // Determine the type of item instance for conditional fields and labels.
     $isLostItem = $item instanceof \App\Models\LostItem;
-    $isFoundItem = $item instanceof \App\Models\FoundItem; // Add this check for FoundItem
-    $isHistoryItem = $item instanceof \App\Models\HistoryItem; // Add this check for HistoryItem
+    $isFoundItem = $item instanceof \App\Models\FoundItem;
+    $isHistoryItem = $item instanceof \App\Models\HistoryItem; 
 
-    // Dynamically set labels based on item type.
     if ($isLostItem) {
         $idLabel = 'ID Lost Item';
         $locationLabel = 'Last seen Location';
@@ -16,27 +14,23 @@
         $idLabel = 'ID Found Item';
         $locationLabel = 'Found Location';
         $dateLabel = 'Date Found';
-    } elseif ($isHistoryItem) { // For History items, labels might be more generic
-        $idLabel = 'ID Report Match'; // Atau ID Match
-        $locationLabel = 'Location'; // Atau biarkan kosong/sesuaikan
-        $dateLabel = 'Date'; // Atau biarkan kosong/sesuaikan
+    } elseif ($isHistoryItem) { 
+        $idLabel = 'ID Report Match'; 
+        $locationLabel = 'Location'; 
+        $dateLabel = 'Date'; 
     } else {
-        // Fallback for unknown item type (should not happen if all are covered)
         $idLabel = 'ID Item';
         $locationLabel = 'Location';
         $dateLabel = 'Date';
     }
 
-    $itemNameLabel = 'Item Name'; // Common for all
-    $reporterNameLabel = 'Report by'; // Common label for the reporter.
-    $phoneLabel = 'Reporter phone number'; // Common label, but source differs
+    $itemNameLabel = 'Item Name'; 
+    $reporterNameLabel = 'Report by'; 
+    $phoneLabel = 'Reporter phone number';
 
-    // Variable to control 'Compare' button visibility.
-    // It will be true if passed from the parent, otherwise defaults to false.
     $showCompareButton = $showCompareButton ?? false;
 @endphp
 
-{{-- Display an error message if the $item variable is not set (e.g., if the component is called incorrectly from a parent view). --}}
 @if (!isset($item))
     <p class="text-red-500 text-center">Error: Data item tidak disediakan untuk komponen detail. Pastikan Anda meneruskan variabel `$item` saat memanggil komponen ini.</p>
 @else
@@ -63,8 +57,7 @@
             <p class="text-gray-800 text-lg mt-1">{{ $item->id }}</p>
         </div> 
 
-        {{-- For HistoryItem, this will show the reporter of the HistoryItem itself if $item->user is available --}}
-        @if (!$isFoundItem && $item->user) {{-- Hanya tampilkan jika BUKAN FoundItem DAN user pelapor ada --}}
+        @if (!$isFoundItem && $item->user) 
             <div class="border-b border-gray-200 pb-3">
                 <label class="text-red-500 font-medium text-sm">* {{ $reporterNameLabel }}</label>
                 <p class="text-gray-800 text-lg mt-1">{{ $item->user->name ?? 'Tidak Dikenal' }}</p>
@@ -105,14 +98,8 @@
             @if ($isLostItem)
                 <p class="text-gray-800 text-lg mt-1">{{ $item->phone ?? 'Tidak tersedia' }}</p>
             @elseif ($isFoundItem && $item->user && $item->user->phone)
-                {{-- For FoundItem, phone is fetched from the reporter's User model if available --}}
                 <p class="text-800 text-lg mt-1">{{ $item->user->phone }}</p>
             @elseif ($isHistoryItem)
-                {{-- For HistoryItem, if you want to show phone, you need to decide from where:
-                     - $item->lostItem->phone (if you want lost item's phone)
-                     - $item->foundItem->user->phone (if you want found item reporter's phone)
-                     - $item->user->phone (if $item->user is the matcher and you want their phone)
-                     For now, I'll put a placeholder or you can refine this: --}}
                 <p class="text-gray-800 text-lg mt-1">Nomor telepon terkait pencocokan</p>
             @else
                 <p class="text-gray-800 text-lg mt-1">Tidak tersedia</p>
@@ -126,9 +113,7 @@
                 </button>
             </a>
 
-            {{-- Tombol Compare, hanya terlihat jika $showCompareButton adalah true --}}
             @if ($showCompareButton)
-                {{-- Meneruskan ID dari item FoundItem ($item) ke rute --}}
                 <a href="{{ route('list_pencocokan', $item->id) }}">
                     <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-800">
                         Compare

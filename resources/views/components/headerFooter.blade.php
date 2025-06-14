@@ -19,31 +19,23 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden xl:flex items-center space-x-8">
-                    {{-- Tautan Home, selalu ditampilkan --}}
                     <a href="{{ route('dashboard') }}" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Home</a>
 
-                    @auth {{-- Tautan ini hanya akan tampil jika pengguna sudah login --}}
-                        {{-- Tautan untuk semua pengguna yang login (user biasa & admin) --}}
+                    @auth 
                         <a href="/reports_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Report Lost</a>
                         <a href="/list_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Lost List</a>
 
-                        @if (Auth::user()->is_admin) {{-- Tautan ini hanya untuk Admin --}}
+                        @if (Auth::user()->is_admin) 
                             <a href="/reports_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Report Found</a>
                             <a href="/list_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Found List</a>
                         @endif
 
-                        {{-- Tautan untuk semua pengguna yang login (user biasa & admin) --}}
                         <a href="/list_history" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">History</a>
                         <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Profile</a>
 
-                        {{-- Logout Button --}}
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Log out</button>
-                        </form>
                     @endauth
 
-                    @guest {{-- Tautan ini hanya akan tampil jika pengguna belum login --}}
+                    @guest 
                         <a href="/login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Log in</a>
                     @endguest
                 </nav>
@@ -57,31 +49,23 @@
             <!-- Mobile Navigation -->
             <div id="mobileMenu" class="xl:hidden hidden border-t border-gray-200 py-4">
                 <nav class="flex flex-col space-y-4">
-                    {{-- Tautan Home, selalu ditampilkan --}}
-                    <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Home</a>
+                    <a href="/dashboard" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Home</a>
 
-                    @auth {{-- Tautan ini hanya akan tampil jika pengguna sudah login --}}
-                        {{-- Tautan untuk semua pengguna yang login (user biasa & admin) --}}
+                    @auth 
                         <a href="/reports_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Report Lost</a>
                         <a href="/list_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Lost List</a>
 
-                        @if (Auth::user()->is_admin) {{-- Tautan ini hanya untuk Admin --}}
+                        @if (Auth::user()->is_admin) 
                             <a href="/reports_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Report Found</a>
                             <a href="/list_found" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Found List</a>
                         @endif
 
-                        {{-- Tautan untuk semua pengguna yang login (user biasa & admin) --}}
                         <a href="/list_history" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">History</a>
                         <a href="/profile" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Profile</a>
 
-                        {{-- Logout Button --}}
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 text-left w-full">Log out</button>
-                        </form>
                     @endauth
 
-                    @guest {{-- Tautan ini hanya akan tampil jika pengguna belum login --}}
+                    @guest 
                         <a href="/login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Log in</a>
                     @endguest
                 </nav>

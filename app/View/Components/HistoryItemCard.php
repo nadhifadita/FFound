@@ -3,7 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use App\Models\HistoryItem; // Pastikan Anda mengimpor model HistoryItem
+use App\Models\HistoryItem; 
 use Closure;
 use Illuminate\Contracts\View\View;
 

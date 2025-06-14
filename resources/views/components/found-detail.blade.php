@@ -7,7 +7,7 @@
         'description' => 'Lorem ipsum dolor sit amet consectetur. Sit volutpat urna elit faucibus urna. Ultricies ultrices imperdiet.',
         'location' => 'JC',
         'date' => '01 06 2035',
-        'photo' => null // Nanti bisa diisi dengan path foto dari database
+        'photo' => null 
     ];
 @endphp
 

@@ -3,15 +3,15 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use Illuminate\Database\Eloquent\Model; // Bisa LostItem atau FoundItem
+use Illuminate\Database\Eloquent\Model; 
 use Closure;
 use Illuminate\Contracts\View\View;
 
 class MatchingItemCard extends Component
 {
-    public Model $item; // LostItem (yang cocok) atau FoundItem (jika membandingkan dari LostItem)
-    public bool $showMatchedButton; // Flag untuk menampilkan tombol "Tandai Cocok"
-    public int $initiatingFoundItemId; // ID FoundItem yang memulai perbandingan (untuk tombol aksi)
+    public Model $item; 
+    public bool $showMatchedButton; 
+    public int $initiatingFoundItemId;
 
     /**
      * Create a new component instance.

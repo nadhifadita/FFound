@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('found_items', function (Blueprint $table) {
             $table->id();
-            // foreignId ke tabel users, menandakan siapa yang menemukan/melaporkan
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('item_name');        // Nama barang yang ditemukan
-            // Kolom 'phone' tidak ada di sini sesuai revisi Anda
-            $table->string('location');         // Lokasi ditemukan
-            $table->date('date');               // Tanggal ditemukan
-            $table->text('description')->nullable(); // Deskripsi, bisa kosong
-            $table->string('photo_path')->nullable(); // Path gambar, bisa kosong
-            $table->timestamps(); // created_at dan updated_at
+            $table->string('item_name');       
+            $table->string('location');        
+            $table->date('date');              
+            $table->text('description')->nullable(); 
+            $table->string('photo_path')->nullable(); 
+            $table->timestamps(); 
         });
     }
 

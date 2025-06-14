@@ -142,10 +142,7 @@
 </div>
 
 <script>
-// Add any additional JavaScript functionality here
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-refresh lost items status (optional)
-    // You can add AJAX calls here to update item status
 });
 </script>
 @endsection

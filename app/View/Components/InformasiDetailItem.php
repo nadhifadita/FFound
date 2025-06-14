@@ -3,13 +3,13 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use App\Models\FoundItem; // Komponen ini akan menampilkan FoundItem
+use App\Models\FoundItem; 
 use Closure;
 use Illuminate\Contracts\View\View;
 
 class InformasiDetailItem extends Component
 {
-    public FoundItem $item; // Properti untuk menerima instance FoundItem
+    public FoundItem $item; 
 
     /**
      * Create a new component instance.

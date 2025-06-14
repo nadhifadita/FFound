@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FoundItem; // Pastikan model FoundItem diimport
+use App\Models\FoundItem; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Support\Facades\Auth; // Diperlukan untuk logika role di metode show, tapi disarankan diimport di sini
+// use Illuminate\Support\Facades\Auth; 
 
 class FoundItemController extends Controller
 {
@@ -15,8 +15,6 @@ class FoundItemController extends Controller
      */
     public function index()
     {
-        // Ambil semua barang ditemukan, diurutkan berdasarkan tanggal terbaru
-        // Anda bisa menambahkan pagination di sini jika daftar sangat panjang, misal: ->paginate(10)
         $foundItems = FoundItem::orderBy('created_at', 'desc')->get();
 
         return view('lists.list_found', compact('foundItems'));
@@ -28,10 +26,8 @@ class FoundItemController extends Controller
      */
     public function show(FoundItem $foundItem)
     {
-        // Penting: Eager load relasi 'user' untuk mendapatkan detail pelapor
         $foundItem->load('user');
 
-        // Logic untuk memilih view berdasarkan role pengguna yang sedang login (viewer)
         return view('Details.found_item_details', compact('foundItem'));
     }
 }

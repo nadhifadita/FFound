@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 
 class FilterDropdown extends Component
 {
-    public function __construct() { } // Konstruktor kosong untuk saat ini
+    public function __construct() { }
 
     public function render(): View|Closure|string
     {

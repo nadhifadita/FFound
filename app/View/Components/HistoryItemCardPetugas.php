@@ -3,14 +3,14 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use App\Models\HistoryItem; // Pastikan Anda mengimpor model HistoryItem
+use App\Models\HistoryItem; 
 use Closure;
 use Illuminate\Contracts\View\View;
 
 class HistoryItemCardPetugas extends Component
 {
-    public HistoryItem $item; // Properti publik untuk menerima instance model HistoryItem
-    public bool $showResolved; // Flag opsional untuk indikator 'Resolved'
+    public HistoryItem $item;
+    public bool $showResolved; 
 
     /**
      * Create a new component instance.
