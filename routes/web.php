@@ -69,4 +69,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
     
 });
 
+use Illuminate\Support\Facades\Artisan;
+
+// ❗Route sementara untuk menjalankan migrate di Railway
+Route::get('/run-migrate', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        return '✅ Migration berhasil dijalankan!';
+    } catch (\Exception $e) {
+        return '❌ Gagal migrate: ' . $e->getMessage();
+    }
+});
+
+
 require __DIR__.'/auth.php';
