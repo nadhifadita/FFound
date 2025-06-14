@@ -49,7 +49,7 @@
             <!-- Mobile Navigation -->
             <div id="mobileMenu" class="xl:hidden hidden border-t border-gray-200 py-4">
                 <nav class="flex flex-col space-y-4">
-                    <a href="/dashboard_login" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Home</a>
+                    <a href="/dashboard" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Home</a>
 
                     @auth 
                         <a href="/reports_lost" class="text-gray-700 hover:text-gray-900 font-medium px-2 py-1 rounded-md">Report Lost</a>
