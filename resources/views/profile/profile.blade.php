@@ -118,7 +118,7 @@
                 <div class="flex flex-col sm:flex-row gap-4 mt-4">
                     <button 
                         type="button" 
-                        onclick="window.location.href='{{ route('profile.edit') }}'"
+                        onclick="window.location.href='{{ route('profile.update') }}'"
                         class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 font-medium"
                     >
                         Edit Profile
