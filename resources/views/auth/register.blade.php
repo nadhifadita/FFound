@@ -16,7 +16,7 @@
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
                 <input id="name" name="name" type="text" required value="{{ old('name') }}"
-                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     placeholder="Enter your full name">
                 @error('name')
                     <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -27,7 +27,7 @@
             <div>
                 <label for="nim_nip" class="block text-sm font-medium text-gray-700 mb-2">NIM/NIP</label>
                 <input id="nim_nip" name="nim_nip" type="text" required value="{{ old('nim_nip') }}"
-                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     placeholder="Enter your NIM or NIP">
                 @error('nim_nip')
                     <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -38,7 +38,7 @@
             <div>
                 <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
                 <input id="phone" name="phone" type="tel" required value="{{ old('phone') }}"
-                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     placeholder="Enter your phone number">
                 @error('phone')
                     <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -50,7 +50,7 @@
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                 <p class="text-xs text-gray-500 mb-2">*please use Universitas Brawijaya email account</p>
                 <input id="email" name="email" type="email" required value="{{ old('email') }}"
-                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     placeholder="Enter your email"
                     pattern=".*@(student\.)?ub\.ac\.id$"
                     title="Please use Universitas Brawijaya email account">
@@ -64,7 +64,7 @@
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
                 <div class="relative">
                     <input id="password" name="password" type="password" required minlength="8"
-                        class="w-full px-3 py-3 pr-10 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        class="w-full px-3 py-3 pr-10 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                         placeholder="Enter your password">
                     <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center"
                         onclick="togglePasswordVisibility('password', 'passwordToggle')">
@@ -81,7 +81,7 @@
                 <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
                 <div class="relative">
                     <input id="password_confirmation" name="password_confirmation" type="password" required minlength="8"
-                        class="w-full px-3 py-3 pr-10 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        class="w-full px-3 py-3 pr-10 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                         placeholder="Confirm your password">
                     <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center"
                         onclick="togglePasswordVisibility('password_confirmation', 'confirmPasswordToggle')">

@@ -27,7 +27,7 @@
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
                     Email
                 </label>
-                <p class="text-xs text-gray-500 mb-2">*Gunakan email Gmail UB</p>
+                <p class="text-xs text-gray-500 mb-2">*Use UB Email</p>
                 <input 
                     id="email" 
                     name="email" 

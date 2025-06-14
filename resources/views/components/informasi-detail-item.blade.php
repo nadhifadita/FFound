@@ -12,8 +12,8 @@
             </div>
             <div class="text-gray-700">
                 <p class="text-lg font-semibold">{{ $item->item_name }}</p>
-                <p class="text-sm">Lokasi Ditemukan: {{ $item->location }}</p>
-                <p class="text-sm">Tanggal Ditemukan: {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}</p>
+                <p class="text-sm">Found Item: {{ $item->location }}</p>
+                <p class="text-sm">Date Found: {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}</p>
                 <p class="text-sm line-clamp-2">{{ $item->description ?? 'Tidak ada deskripsi.' }}</p>
             </div>
         </div>

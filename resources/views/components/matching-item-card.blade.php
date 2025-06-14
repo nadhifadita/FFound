@@ -5,7 +5,7 @@
 @php
     $isLostItem = $item instanceof \App\Models\LostItem; // Harusnya selalu true di konteks ini
     $detailRouteName = $isLostItem ? 'lost_item_details' : 'found_item_details'; // Untuk link detail
-    $labelPrefix = $isLostItem ? 'Hilang' : 'Ditemukan'; // Untuk label lokasi/tanggal
+    $labelPrefix = $isLostItem ? 'Lost' : 'Found'; // Untuk label lokasi/tanggal
 @endphp
 
 <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">

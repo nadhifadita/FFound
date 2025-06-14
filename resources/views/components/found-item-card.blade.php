@@ -16,14 +16,14 @@
 
         {{-- Owner Name (Nama Kehilangan, jika ada) --}}
         @if ($item->owner_name)
-            <p class="text-sm text-gray-600">Hilang oleh: <span class="font-medium">{{ $item->owner_name }}</span></p>
+            <p class="text-sm text-gray-600">Lost By: <span class="font-medium">{{ $item->owner_name }}</span></p>
         @endif
         
         {{-- Location --}}
-        <p class="text-sm text-gray-600 mt-1">Lokasi: <span class="font-medium">{{ $item->location }}</span></p>
+        <p class="text-sm text-gray-600 mt-1">Location: <span class="font-medium">{{ $item->location }}</span></p>
 
         {{-- Date --}}
-        <p class="text-sm text-gray-600">Tanggal: <span class="font-medium">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</span></p>
+        <p class="text-sm text-gray-600">Date: <span class="font-medium">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</span></p>
 
         {{-- Description (opsional, dipotong) --}}
         @if ($item->description)
