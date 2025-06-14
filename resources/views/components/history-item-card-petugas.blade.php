@@ -13,9 +13,9 @@
             <h4 class="font-semibold text-gray-700 mb-1">Lost Item:</h4>
             <p class="text-md text-gray-800 truncate">
                 {{ $item->lostItem->item_name }}
-                @if ($item->lostItem->trashed())
+                {{-- @if ($item->lostItem->trashed())
                     <span class="text-red-500 text-xs">(Deleted)</span>
-                @endif
+                @endif --}}
             </p>
             <p class="text-sm text-gray-600">Location: {{ $item->lostItem->location }}</p>
             @if ($item->lostItem->photo_path)
@@ -27,9 +27,9 @@
             <h4 class="font-semibold text-gray-700 mb-1">Found Item:</h4>
             <p class="text-md text-gray-800 truncate">
                 {{ $item->foundItem->item_name }}
-                @if ($item->foundItem->trashed())
+                {{-- @if ($item->foundItem->trashed())
                     <span class="text-red-500 text-xs">(Deleted)</span>
-                @endif
+                @endif --}}
             </p>
             <p class="text-sm text-gray-600">Location: {{ $item->foundItem->location }}</p>
             @if ($item->foundItem->photo_path)
