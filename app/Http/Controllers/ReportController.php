@@ -17,13 +17,13 @@ class ReportController extends Controller
     public function storeLostItem(Request $request)
     {
         $validatedData = $request->validate([
-            'lost_by' => 'required|string|max:255',    // Nama Orang yang Kehilangan
+            'lost_by' => 'required|string|max:255',   
             'item_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',       // Nomor Telepon Pelapor
+            'phone' => 'required|string|max:20',     
             'location' => 'required|string|max:255',
             'date' => 'required|date',
             'description' => 'nullable|string|max:1000',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // File gambar
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
         $photoPath = null;
@@ -56,7 +56,7 @@ class ReportController extends Controller
             'location' => 'required|string|max:255',
             'date' => 'required|date',
             'description' => 'nullable|string|max:1000',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // File gambar
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
         $photoPath = null;
@@ -73,7 +73,6 @@ class ReportController extends Controller
             'photo_path' => $photoPath,
         ]);
 
-        // Redirect berdasarkan role
         $route = 'list_found';
 
         return redirect()->route($route)->with('success', 'Laporan barang ditemukan berhasil dikirim.');

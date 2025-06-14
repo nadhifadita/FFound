@@ -15,10 +15,10 @@ class HistoryItemController extends Controller
     {
         $query = HistoryItem::with([
             'lostItem' => function($query){
-                $query->withTrashed(); // Sertakan item hilang yang di-soft-delete
+                $query->withTrashed();
             },
             'foundItem' => function($query){
-                $query->withTrashed(); // Sertakan item ditemukan yang di-soft-delete
+                $query->withTrashed(); 
             }
         ]);
         $sortOrder = $request->query('sort_order', 'desc');
@@ -52,16 +52,13 @@ class HistoryItemController extends Controller
     */
 
     /**
-     * Menampilkan detail item riwayat pencocokan.
-     * Metode ini akan memilih view detail yang benar berdasarkan role pengguna.
      *
      * @param  \App\Models\HistoryItem  $historyItem  Instance model HistoryItem.
      * @return \Illuminate\View\View
      */
-    public function show(HistoryItem $historyItem) // <--- PASTIKAN METODE INI ADA
+    public function show(HistoryItem $historyItem) 
     {
-        // PENTING: Eager load relasi 'lostItem', 'foundItem', dan 'user' di dalamnya.
-        // Ini memastikan data LostItem, FoundItem, dan informasi pelapornya tersedia di view.
+        
         $historyItem->load([
             'lostItem' => function($query) {
                 $query->withTrashed();
@@ -69,8 +66,7 @@ class HistoryItemController extends Controller
             'foundItem' => function($query) {
                 $query->withTrashed()->with('user');
             },
-            //'lostItem.user', // User pelapor lost item (tidak perlu withTrashed kecuali user juga soft-delete)
-            //'foundItem.user', // User pelapor found item
+            
         ]);
 
         return view('Details.history_item_details', compact('historyItem'));

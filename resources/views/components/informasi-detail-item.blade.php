@@ -1,4 +1,3 @@
-{{-- Komponen ini mengharapkan variabel $item, yang merupakan model FoundItem --}}
 
 <div class="flex justify-center mb-8">
     <div class="bg-white inline-block rounded-lg shadow-md p-4 border">

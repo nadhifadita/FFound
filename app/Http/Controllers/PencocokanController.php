@@ -17,24 +17,11 @@ class PencocokanController extends Controller
     {
         $foundItem->load('user');
 
-        // --- PERBAIKAN DI SINI: Gunakan filter() untuk menghapus NULL dari hasil pluck ---
-        // 1. Ambil ID dari semua LostItem yang sudah ada di tabel history_items.
-        //    '.filter()' akan menghapus nilai NULL dari koleksi sebelum diubah menjadi array.
         $matchedLostItemIds = HistoryItem::pluck('lost_item_id')->filter()->toArray();
 
-        // 2. Ambil semua LostItem (yang sesuai kriteria), tetapi KECUALIKAN yang sudah cocok.
-        //    Sekarang $matchedLostItemIds hanya berisi ID integer yang valid, membuat whereNotIn efektif.
         $matchingLostItems = LostItem::whereNotIn('id', $matchedLostItemIds)
                                     ->orderBy('date', 'desc')
                                     ->get();
-
-        // --- DIAGNOSA (setelah perbaikan, jika masih ada masalah) ---
-        // dd([
-        //     'FoundItem (Initiating Comparison)' => $foundItem->toArray(),
-        //     'Cleaned Matched Lost Item IDs (used for exclusion)' => $matchedLostItemIds, // Periksa apakah ini sekarang array ID integer tanpa NULL
-        //     'Final Matching Lost Items' => $matchingLostItems->toArray(),
-        // ]);
-        // --- AKHIR DIAGNOSA ---
 
         return view('lists.list_pencocokan', compact('foundItem', 'matchingLostItems'));
     }
@@ -69,7 +56,6 @@ class PencocokanController extends Controller
                     'notes' => 'Dicocokkan secara manual oleh petugas.'
                 ]);
 
-                // BARIS INI AKAN MENGHAPUS FISIK (JIKA SOFT DELETES TIDAK AKTIF)
                 $lostItemToDelete->delete();
                 $foundItemToDelete->delete();
 
@@ -77,7 +63,6 @@ class PencocokanController extends Controller
                 return redirect()->route('list_history')->with('success', $message);
 
             } catch (\Exception $e) {
-                // Jika ini terpanggil, berarti ada error saat create HistoryItem atau delete
                 dd("Error di proses creation/deletion: " . $e->getMessage(), $e->getTrace());
             }
 

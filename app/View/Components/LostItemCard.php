@@ -3,13 +3,13 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use App\Models\LostItem; // Pastikan Anda mengimpor model LostItem Anda
+use App\Models\LostItem; 
 use Closure;
 use Illuminate\Contracts\View\View;
 
 class LostItemCard extends Component
 {
-    public $item; // Properti publik untuk menerima instance model LostItem
+    public $item;
 
     /**
      * Create a new component instance.
