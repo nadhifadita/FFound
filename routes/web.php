@@ -27,9 +27,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     # Lihat Profile
-    Route::get('/profile', function () {
-        return view('profile.profile');
-    })->name('profile');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
     # Edit Profile
     Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('profile.edit');
