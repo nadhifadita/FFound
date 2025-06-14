@@ -15,7 +15,7 @@
         $locationLabel = 'Found Location';
         $dateLabel = 'Date Found';
     } elseif ($isHistoryItem) { 
-        $idLabel = 'ID Report Match'; 
+        $idLabel = 'ID Report Match';
         $locationLabel = 'Location'; 
         $dateLabel = 'Date'; 
     } else {
@@ -51,41 +51,80 @@
         </div>
     </div>
 
+    
     <div class="space-y-6">
-        <div class="border-b border-gray-200 pb-3">
-            <label class="text-red-500 font-medium text-sm">* {{ $idLabel }}</label>
-            <p class="text-gray-800 text-lg mt-1">{{ $item->id }}</p>
-        </div> 
+        @if ($isHistoryItem)
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* Lost ID</label>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->lostItem->id }}</p>
+            </div>
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* Found ID</label>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->foundItem->id }}</p>
+            </div>
+        @else
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* {{ $idLabel }}</label>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->id }}</p>
+            </div>
+        @endif
 
-        @if (!$isFoundItem && $item->user) 
+        {{-- @if (!$isFoundItem && $item->user) 
             <div class="border-b border-gray-200 pb-3">
                 <label class="text-red-500 font-medium text-sm">* {{ $reporterNameLabel }}</label>
                 <p class="text-gray-800 text-lg mt-1">{{ $item->user->name ?? 'Tidak Dikenal' }}</p>
             </div>
-        @endif
+        @endif --}}
 
         {{-- Nama Kehilangan (Owner Name - specific to LostItem only) --}}
-        @if ($isLostItem && isset($item->owner_name) && $item->owner_name)
+        @if ($isLostItem && isset($item->lost_by) && $item->lost_by)
             <div class="border-b border-gray-200 pb-3">
                 <label class="text-red-500 font-medium text-sm">* Lost By Name</label>
-                <p class="text-gray-800 text-lg mt-1">{{ $item->owner_name }}</p>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->lost_by }}</p>
             </div>
         @endif
 
-        <div class="border-b border-gray-200 pb-3">
-            <label class="text-red-500 font-medium text-sm">* {{ $itemNameLabel }}</label>
-            <p class="text-gray-800 text-lg mt-1">{{ $item->item_name }}</p>
-        </div>
+        @if ($isHistoryItem)
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* {{ $itemNameLabel }}</label>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->lostItem->item_name }}</p>
+            </div>
+        @else 
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* {{ $itemNameLabel }}</label>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->item_name }}</p>
+            </div>    
+        @endif
 
-        <div class="border-b border-gray-200 pb-3">
+        @if ($isHistoryItem)
+            <div class="border-b border-gray-200 pb-3">
             <label class="text-red-500 font-medium text-sm">* Description</label>
-            <p class="text-gray-700 text-base mt-2 leading-relaxed">{{ $item->description ?? 'Tidak ada deskripsi.' }}</p>
+            <p class="text-gray-800 text-lg mt-1">{{ $item->lostItem->description ?? 'No description.' }}</p>
         </div>
+        @else
+            <div class="border-b border-gray-200 pb-3">
+            <label class="text-red-500 font-medium text-sm">* Description</label>
+            <p class="text-gray-800 text-lg mt-1">{{ $item->description ?? 'No description.' }}</p>
+        </div>
+        @endif
 
-        <div class="border-b border-gray-200 pb-3">
-            <label class="text-red-500 font-medium text-sm">* Location</label>
-            <p class="text-gray-800 text-lg mt-1">{{ $item->location }}</p>
-        </div>
+        {{-- location --}}
+        @if ($isHistoryItem)
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* Lost Location</label>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->lostItem->location }}</p>
+            </div>
+
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* Found Location</label>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->foundItem->location }}</p>
+            </div>
+        @else
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* Location</label>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->location }}</p>
+            </div>
+        @endif
 
         <div class="border-b border-gray-200 pb-3">
             <label class="text-red-500 font-medium text-sm">* {{ $dateLabel }}</label>
@@ -93,18 +132,17 @@
         </div>
 
         {{-- Phone number logic based on item type and availability --}}
-        <div class="border-b border-gray-200 pb-3">
-            <label class="text-red-500 font-medium text-sm">* {{ $phoneLabel }}</label>
-            @if ($isLostItem)
+        @if ($isLostItem)
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* {{ $phoneLabel }}</label>
                 <p class="text-gray-800 text-lg mt-1">{{ $item->phone ?? 'Tidak tersedia' }}</p>
-            @elseif ($isFoundItem && $item->user && $item->user->phone)
-                <p class="text-800 text-lg mt-1">{{ $item->user->phone }}</p>
+            </div>
             @elseif ($isHistoryItem)
-                <p class="text-gray-800 text-lg mt-1">Nomor telepon terkait pencocokan</p>
-            @else
-                <p class="text-gray-800 text-lg mt-1">Tidak tersedia</p>
+            <div class="border-b border-gray-200 pb-3">
+                <label class="text-red-500 font-medium text-sm">* {{ $phoneLabel }}</label>
+                <p class="text-gray-800 text-lg mt-1">{{ $item->lostItem->phone ?? 'Tidak tersedia' }}</p>
+            </div>
             @endif
-        </div>
         
         <div class="flex justify-between mt-4">
             <a href="{{ url()->previous() }}">

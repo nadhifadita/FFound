@@ -14,7 +14,7 @@
     <div class="flex justify-center mt-12">
         <div class="max-w-4xl w-max lg:w-screen p-8">
             <div class="text-left mb-8">
-                @include('components.itemDetails', ['item' => $historyItem->lostItem])
+                @include('components.itemDetails', ['item' => $historyItem])
             </div>
         </div>
     </div>
