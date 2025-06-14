@@ -19,6 +19,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'nim_nip',
+        'phone',
+        'is_admin',
         'email',
         'password',
     ];
@@ -33,6 +36,19 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+    public function isAdmin(): bool
+    {
+        return $this->is_admin;
+    }
+
+    // Relasi ke profil admin (jika ada)
+    public function adminProfile()
+    {
+        return $this->hasOne(AdminProfile::class);
+    }
+
+
     /**
      * Get the attributes that should be cast.
      *
@@ -43,6 +59,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
     }
 }
